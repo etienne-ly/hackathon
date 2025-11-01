@@ -24,7 +24,6 @@ export interface Email {
 }
 
 export interface Tab {
-  icon: string;
   title: string;
   url: string;
 }
