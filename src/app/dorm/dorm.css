@@ -1,0 +1,18 @@
+.dorm {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.room {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40rem;
+  height: 30rem;
+  border: black solid 2px;
+}
+

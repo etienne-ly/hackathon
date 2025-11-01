@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../service/ai.service';
 import {WebPage} from '../models/state';
+import {GameService} from '../service/game.service';
 
 @Component({
   selector: 'app-binocular',
@@ -12,7 +13,7 @@ export class Binocular implements OnInit {
   @Input() search: string = "";
   results: WebPage[] = [];
 
-  constructor(private aiService: AiService) {
+  constructor(public game: GameService, private aiService: AiService) {
   }
 
   async ngOnInit(): Promise<void> {

@@ -3,6 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {Tab} from '../models/state';
 import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
+import {MailComponent} from '../mail-page/mail-page.component';
 
 @Component({
   selector: 'app-browser',
@@ -24,6 +25,10 @@ export class Browser {
 
   openDorm(): void {
     this.openTab("Dorm", "127.0.0.1", DormComponent)
+  }
+
+  openMail(): void {
+    this.openTab("Mail", "https://insidemail.com", MailComponent)
   }
 
   openTab(title: string, url: string, component: Type<any> = Binocular): ComponentRef<any> {

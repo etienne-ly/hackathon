@@ -33,6 +33,7 @@ export interface Tab {
 
 export interface DormState {
   windowOpen: boolean;
+  modemWorking: boolean;
 }
 
 export interface PageContent {

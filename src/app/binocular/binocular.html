@@ -1,4 +1,15 @@
-@for (page of results; track page) {
+@if (!game.hasWifi) {
+  <div class="page-no-wifi">
+    <h2>No internet</h2>
+    <p>Try:</p>
+    <ul>
+      <li>Check your dorm...</li>
+      <li>Lock your windows...</li>
+      <li>Fix your modem...</li>
+    </ul>
+  </div>
+} @else {
+  @for (page of results; track page) {
 
     <div class="page-info">
       <div class="page-header">
@@ -13,6 +24,5 @@
       <p class="page-description">{{page.description}}</p>
     </div>
 
-} @empty {
-
+  } @empty {}
 }

@@ -7,9 +7,11 @@ import {CompletionState, DangerState, DormState, Email, Tab, UserInfo} from '../
 export class GameService {
 
   public user: UserInfo;
+  public hasWifi: boolean = false;
 
   public dorm: DormState = {
     windowOpen: false,
+    modemWorking: false
   };
 
   public completion: CompletionState = {
