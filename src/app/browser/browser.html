@@ -13,10 +13,10 @@
     <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
     <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
     <span class="material-symbols-rounded" style="font-size: 1.1rem;">refresh</span>
-    <div id="url-field">
+    <form id="url-field" (ngSubmit)="search()">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
-      <input class="url-input" type="text" value="{{gameService.tabs![currentTab].url}}">
-    </div>
+      <input class="url-input" type="text" [(ngModel)]="query">
+    </form>
   </section>
   <section class="content">
     <router-outlet></router-outlet>
