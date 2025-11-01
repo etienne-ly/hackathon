@@ -1,7 +1,8 @@
 import {Component, ComponentRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Tab} from '../../models/state';
-import {Binocular} from '../../page/binocular/binocular';
+import {Tab} from '../models/state';
+import {Binocular} from '../binocular/binocular';
+import {DormComponent} from '../dorm/dorm';
 
 @Component({
   selector: 'app-browser',
@@ -20,6 +21,10 @@ export class Browser {
   currentTab: number = -1;
   query: string = "";
   tabs: Tab[] = [];
+
+  openDorm(): void {
+    this.openTab("Dorm", "127.0.0.1", DormComponent)
+  }
 
   openTab(title: string, url: string, component: Type<any> = Binocular): ComponentRef<any> {
     this.tabs.push({
@@ -89,6 +94,28 @@ export class Browser {
     this.currentTab = index;
   }
 
+  replaceTab(title: string, url: string, component: Type<any>): ComponentRef<any> {
+    if (this.currentTab == -1) {
+      return this.openTab(title, url, component);
+    }
+
+    const tab = this.tabs[this.currentTab];
+    const idx = this.container.indexOf(tab.componentRef.hostView);
+    if (idx !== -1) {
+      this.container.detach(idx);
+    }
+
+    tab.componentRef.destroy();
+    this.tabs[this.currentTab] = {
+      title,
+      url,
+      componentRef: this.container.createComponent(component)
+    }
+
+    this.container.insert(this.tabs[this.currentTab].componentRef.hostView)
+    return this.tabs[this.currentTab].componentRef;
+  }
+
   search(): void {
     // if (this.query.startsWith("http")) {
     //   // TODO: Go straight to website
@@ -103,8 +130,7 @@ export class Browser {
     }
 
     // replace current tab with a search one
-    this.closeTab(this.currentTab);
-    const ref = this.openTab("Binocular", "https://binocular.com", Binocular);
+    const ref = this.replaceTab("Binocular", "https://binocular.com", Binocular);
     ref.setInput("search", this.query);
   }
 
