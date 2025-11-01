@@ -1,0 +1,56 @@
+.container {
+  position: fixed;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  max-width: 200px;
+  max-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Close button in top-right corner */
+.container button {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: #ff5c5c;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  line-height: 18px;
+  padding: 0;
+}
+
+/* Image styling */
+.container img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* Positioning based on side */
+.container.bottom {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container.left {
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container.right {
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
