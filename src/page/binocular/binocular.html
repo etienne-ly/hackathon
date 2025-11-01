@@ -1,1 +1,18 @@
-<p>binocular works!</p>
+@for (page of results; track page) {
+
+    <div class="page-info">
+      <div class="page-header">
+        <img src="https://picsum.photos/25" alt="{{page.url}}">
+        <div>
+          <p class="page-header-domain">{{page.domain}}</p>
+          <p class="page-header-url">{{page.url}}</p>
+        </div>
+      </div>
+
+      <p class="page-title">{{page.title}}</p>
+      <p class="page-description">{{page.description}}</p>
+    </div>
+
+} @empty {
+  <p>No search results...</p>
+}

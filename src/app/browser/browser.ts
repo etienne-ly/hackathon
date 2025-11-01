@@ -1,13 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {GameService} from '../../service/game.service';
+import {NewsTemplate} from '../templates/news-template/news-template';
 import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-browser',
   imports: [
-    RouterOutlet,
+    NewsTemplate,
     FormsModule,
+    RouterOutlet,
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',

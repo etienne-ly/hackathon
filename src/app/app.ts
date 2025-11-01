@@ -5,7 +5,7 @@ import {Browser} from './browser/browser';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MailComponent,Browser],
+  imports: [Browser],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

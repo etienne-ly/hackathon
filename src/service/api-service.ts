@@ -4,7 +4,8 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  async get(prompt: string) {
+  async get<T>(prompt: string): Promise<T> {
+    console.log("Sent request to api");
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -12,7 +13,7 @@ export class ApiService {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "model": "minimax/minimax-m2:free",
+        "model": "deepseek/deepseek-chat-v3.1:free",
         "messages": [
           {
             "role": "user",
@@ -22,7 +23,9 @@ export class ApiService {
       })
     });
     const data = await res.json();
-    console.log(data.choices[0].message.content);
-    return data;
+    console.log(data);
+    const stringData = data.choices[0].message.content;
+    console.log(stringData);
+    return JSON.parse(stringData) as T;
   }
 }

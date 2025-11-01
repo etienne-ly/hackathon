@@ -42,6 +42,7 @@ export interface PageContent {
 }
 
 export interface WebPage {
+  domain: string;
   title: string;
   description: string;
   url: string;
