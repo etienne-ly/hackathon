@@ -35,7 +35,7 @@ export class Browser {
     }
 
     // go to search website
-    this.router.navigate(['/binocular'], {queryParams: {search: this.query}});
+    this.router.navigate(['/binocular', this.query]);
   }
 
 }

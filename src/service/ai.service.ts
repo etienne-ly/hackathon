@@ -3,7 +3,8 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class AiService {
+
   async get<T>(prompt: string): Promise<T> {
     console.log("Sent request to api");
     const res = await fetch("https://llm.chutes.ai/v1/chat/completions", {
@@ -28,4 +29,5 @@ export class ApiService {
     console.log(stringData);
     return JSON.parse(stringData) as T;
   }
+
 }
