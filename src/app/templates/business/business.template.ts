@@ -4,7 +4,7 @@ import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {GameService} from '../../service/game.service';
 import {LoginOverlayService} from '../../service/login.overlay.service';
-import {FormLogin} from '../../form-login/form-login';
+import {FormLogin} from '../../form-componentes/form-login/form-login';
 
 interface PageContent {
   websiteName: string;
@@ -35,7 +35,7 @@ export class BusinessTemplate implements OnInit {
 
   async ngOnInit() {
     console.log("Sending request to api");
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
+    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content ${true ? 'CONTAINING OBVIOUS GRAMMATICAL ERRORS and' : ''} FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +
       "  \"email\": string,\n" +
       "  \"phone\": string,\n" +

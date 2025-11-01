@@ -1,10 +1,10 @@
 import {Component, ComponentRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Tab} from '../models/state';
+import {Tab} from '../../models/state';
 import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
 import {MailComponent} from '../mail-page/mail-page.component';
-import {GameService} from '../service/game.service';
+import {GameService} from '../../service/game.service';
 
 @Component({
   selector: 'app-browser',

@@ -16,9 +16,7 @@ interface PageContent {
 
 @Component({
   selector: 'app-e-commerce-template',
-  imports: [
-    NgIf
-  ],
+  imports: [],
   templateUrl: './e-commerce.template.html',
   styleUrl: './e-commerce.template.css',
 })
