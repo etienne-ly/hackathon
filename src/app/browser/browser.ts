@@ -1,18 +1,18 @@
 import {Component, Input} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {Tab} from '../../models/state';
+import {GameService} from '../../service/game.service';
 
 @Component({
   selector: 'app-browser',
   imports: [
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
 })
 
 export class Browser {
-  @Input() tabs?: Array<Tab>;
-
-  currentTab: number = 0;
+  constructor(public gameService: GameService) {}
+  currentTab: number = -1;
 }
