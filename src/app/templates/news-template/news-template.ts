@@ -20,7 +20,6 @@ export class NewsTemplate implements OnInit {
   constructor(private api: ApiService) {}
 
   async ngOnInit() {
-    console.log("Sending request to api");
     this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +
       "  \"title\": string,\n" +
