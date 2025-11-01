@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 import {GameService} from '../../service/game.service';
+import {ImgApiService} from '../../service/imgApi.service';
 
 interface PageContent {
   color: string;
@@ -20,11 +21,15 @@ export class ForumTemplate {
   @Input() title: string = "";
   @Input() url: string = "";
   pageContent?: PageContent;
+  images: {[key: string]: string} = {};
 
-  constructor(private api: AiService, public game: GameService) {}
+  constructor(private api: AiService, public game: GameService, private imageApi: ImgApiService) {}
 
   async ngOnInit() {
     this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
+    for (let thread of this.pageContent.threads) {
+      this.images[thread.title] = await this.imageApi.getImage(thread.title);
+    }
   }
 
 }

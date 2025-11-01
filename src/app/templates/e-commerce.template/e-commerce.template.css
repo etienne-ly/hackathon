@@ -20,6 +20,10 @@ h2, h4 {
   margin: 0;
 }
 
+.banner {
+  width: 100%;
+}
+
 nav {
   padding: 0.4rem 16rem;
   display: flex;

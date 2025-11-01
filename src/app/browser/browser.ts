@@ -49,6 +49,7 @@ export class Browser {
 
     this.currentTab = this.tabs.length - 1;
     this.container.insert(this.tabs[this.currentTab].componentRef.hostView);
+    this.query = url;
     return this.tabs[this.currentTab].componentRef;
   }
 
@@ -79,6 +80,7 @@ export class Browser {
     if (deletedCurr) {
       const newTab = this.tabs[this.currentTab];
       this.container.insert(newTab.componentRef.hostView);
+      this.query = newTab.url;
     }
   }
 
@@ -100,6 +102,7 @@ export class Browser {
 
     this.container.insert(newTab.componentRef.hostView);
     this.currentTab = index;
+    this.query = newTab.url;
   }
 
   replaceTab(title: string, url: string, component: Type<any>): ComponentRef<any> {
@@ -122,6 +125,7 @@ export class Browser {
       componentRef: this.container.createComponent(component)
     }
 
+    this.query = url;
     this.container.insert(this.tabs[this.currentTab].componentRef.hostView)
     return this.tabs[this.currentTab].componentRef;
   }
@@ -133,16 +137,17 @@ export class Browser {
     // }
 
     // go to search website
+    const realQuery = this.query;
     if (this.currentTab == -1) {
       const ref = this.openTab("Binocular", "https://binocular.com", Binocular);
-      ref.setInput("search", this.query);
+      ref.setInput("search", realQuery);
       ref.setInput('replaceTab', (title: string, url: string, component: Type<any>) => this.replaceTab(title, url, component))
       return;
     }
 
     // replace current tab with a search one
     const ref = this.replaceTab("Binocular", "https://binocular.com", Binocular);
-    ref.setInput("search", this.query);
+    ref.setInput("search", realQuery);
     ref.setInput('replaceTab', (title: string, url: string, component: Type<any>) => this.replaceTab(title, url, component))
   }
 

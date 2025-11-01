@@ -27,9 +27,8 @@ export class BusinessTemplate implements OnInit {
   @Input() title: string = "";
   @Input() url: string = "";
   image: string = "";
+  featureImage: string = "";
   pageContent?: PageContent;
-
-
 
   constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService,public overlayService: LoginOverlayService) {
   }
@@ -48,6 +47,7 @@ export class BusinessTemplate implements OnInit {
 
     if (this.pageContent?.websiteName) {
       this.image = await this.imgApi.getImage(this.pageContent.websiteName);
+      this.featureImage = await this.imgApi.getImage(`${this.pageContent.websiteName} features`);
     }
   }
   openLogin(): void {

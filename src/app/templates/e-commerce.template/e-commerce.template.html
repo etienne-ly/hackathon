@@ -28,8 +28,8 @@
       }
     </nav>
     <section>
-      <img style="max-width: 100%; background-image:linear-gradient(#1e40af,#101010) "
-           src="https://picsum.photos/1920/720">
+      <img style="width: 100%; background-image:linear-gradient(#1e40af,#101010) "
+           src="{{image}}">
       <div
         style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 33%; gap: 1rem; position: absolute; left: 4rem; top: 0; text-shadow: 0 0 2rem black; color: white;">
         <h4>{{ pageContent?.promotionProduct }}</h4>
@@ -42,10 +42,10 @@
       @for (category of pageContent?.categories; track category) {
         <div
           style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 6rem; max-width: 6rem;">
-          <img style="border-radius: 0.8rem" src="https://picsum.photos/seed/{{category}}/50/50" alt="">
+          <img style="border-radius: 0.8rem" src="{{categoryImages[category]}}" alt="">
           <div style="display: flex; flex-direction: column; gap: 0.2rem; text-align: center">
             <h4>{{ category }}</h4>
-            <p style="color: #605e5c; font-size: 0.8rem">{{ Math.floor(Math.random() * 300) }} items</p>
+            <p style="color: #605e5c; font-size: 0.8rem">{{categoryAmounts[category]}} items</p>
           </div>
         </div>
       }
@@ -55,7 +55,9 @@
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center">
         @for (product of pageContent?.products; track product) {
           <div style="display: flex; flex-direction: column; gap: 0.4rem; min-width: 10rem; max-width: 10rem;">
-            <img style="border-radius: 1rem;" src="https://picsum.photos/seed/{{product.name}}/160/220" alt="">
+            <div style="height: 8rem; width: 8rem">
+              <img style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem;" src="{{productImages[product.name]}}" alt="">
+            </div>
             <p>{{ product.name }}</p>
             <p style="font-size: 0.8rem; color: #605e5c">{{ product.rating }} | {{ product.category }}</p>
             <p>${{ product.price }}</p>

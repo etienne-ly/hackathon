@@ -11,21 +11,6 @@
 } @else {
   @if (pageContent) {
     <div class="business-template" [style.--primary-color]="pageContent?.color">
-      <!-- Navigation -->
-      <nav class="navbar">
-        <div class="nav-container">
-          <div class="nav-brand">
-            <span class="brand-name">{{ pageContent?.websiteName }}</span>
-          </div>
-          <ul class="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <button class="menu-toggle">☰</button>
-        </div>
-      </nav>
       <div class="gcse-search"></div>
       <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
         <!-- Navigation -->
@@ -80,7 +65,7 @@
                 <button class="btn-features">Learn More</button>
               </div>
               <div class="features-image">
-                <img src="https://picsum.photos/seed/a/1920/1080" alt=""/>
+                <img src="{{featureImage}}" alt=""/>
               </div>
             </div>
           </div>
