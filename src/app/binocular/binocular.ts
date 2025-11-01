@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Type} from '@angular/core';
 import {AiService} from '../service/ai.service';
 import {WebPage} from '../models/state';
 import {GameService} from '../service/game.service';
@@ -18,25 +18,28 @@ export class Binocular implements OnInit {
   @Input() search: string = "";
   results: WebPage[] = [];
 
-  constructor(public game: GameService, private aiService: AiService) {}
+  constructor(public game: GameService, private aiService: AiService) {
+  }
 
   async ngOnInit(): Promise<void> {
+    if (this.search == "") {
+      return;
+    }
+
     this.results = await this.aiService.get<WebPage[]>(`Generate me fake webpage content FILLING this JSON format ONLY (no extra words or characters): { "template": "news" | "forum" | "e-commerce" | "business", "domain": string, "title": string, "description": string, "url": string }[12], based on the following search string: "${this.search}".`)
   }
 
   getComponentFromString(value: 'news' | 'forum' | 'e-commerce' | 'business'): Type<any> {
     switch (value) {
-      case 'news': return NewsTemplate;
-      case 'forum': return ForumTemplate;
-      case 'e-commerce': return ECommerceTemplate;
-      default: return BusinessTemplate;
+      case 'news':
+        return NewsTemplate;
+      case 'forum':
+        return ForumTemplate;
+      case 'e-commerce':
+        return ECommerceTemplate;
+      default:
+        return BusinessTemplate;
     }
-    if (this.search == "") {
-      return;
-    }
-
-    this.results = await this.aiService.get<WebPage[]>(
-      `Generate me a JSON list of at least 10 fake websites with descriptions of at least 200 characters, the websites can be https or http randomly, FILLING this format ONLY (no extra words or characters): '{"title": string, "domain": string, "description": string, "url": string}', based on the following query string: '${this.search}'`);
   }
 
 }

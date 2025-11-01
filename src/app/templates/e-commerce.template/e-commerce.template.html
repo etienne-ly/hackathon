@@ -10,7 +10,7 @@
   </div>
 } @else {
   <header>
-    <h2>{{ pageContent?.title }}</h2>
+    <h2>{{ pageContent?.websiteName }}</h2>
     <div
       style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; border: 1px solid oklch(90% 0 0); padding: 0.4rem 0.8rem;">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
@@ -64,6 +64,6 @@
     </div>
   </section>
   <footer>
-    <p>{{ pageContent?.title }} 2025, all rights reserved</p>
+    <p>{{ pageContent?.websiteName }} 2025, all rights reserved</p>
   </footer>
 }

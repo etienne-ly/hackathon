@@ -17,7 +17,7 @@ import {GameService} from '../service/game.service';
 
 export class Browser {
 
-  constructor(public gameService: GameService) {}
+  constructor(public game: GameService) {}
 
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
