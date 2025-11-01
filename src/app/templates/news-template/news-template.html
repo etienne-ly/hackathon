@@ -24,7 +24,7 @@
     </div>
   </header>
   <section class="highlight" style="display: flex">
-    <img style="flex: 2; max-width: 66%" src="https://picsum.photos/1920/1080" alt=""/>
+    <img style="flex: 2; max-width: 66%" [src]="imgUrl" alt=""/>
     <div style="display: flex; flex-direction: column; flex: 1; padding: 4rem; gap: 1rem;">
       <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ pageContent?.highlightCategory }}</p>
       <h4>{{ pageContent?.highlightTitle }}</h4>

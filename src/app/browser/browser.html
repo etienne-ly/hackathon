@@ -36,4 +36,15 @@
   <section class="content">
     <div #container></div>
   </section>
+  @if (gameService.popup.visible) {
+    <div id="popup">
+      <p style="font-size: 1rem;">{{gameService.popup.url}}</p>
+      <p style="font-size: 0.7rem; color: #888">{{gameService.popup.title}}</p>
+      <div>
+        @for (action of gameService.popup.actions; track action) {
+          <button (click)="gameService.popup.visible = false; action.action()">{{action.name}}</button>
+        }
+      </div>
+    </div>
+  }
 </main>

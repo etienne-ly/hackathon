@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CompletionState, DormState, Email, Tab, UserInfo} from '../models/state';
+import {CompletionState, DormState, Email, Popup, Tab, UserInfo} from '../models/state';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,13 @@ import {CompletionState, DormState, Email, Tab, UserInfo} from '../models/state'
 export class GameService {
 
   public user: UserInfo;
+
+  public popup: Popup = {
+    visible: true,
+    url: 'www.p-diddy.cp',
+    title: 'wants to know your location',
+    actions: [{name: 'Allow', action: () => {}}, {name: 'Deny', action: () => {}}],
+  }
 
   public dorm: DormState = {
     vpnUsed: false,

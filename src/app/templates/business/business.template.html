@@ -9,8 +9,6 @@
     </ul>
   </div>
 } @else {
-  <script async src="https://cse.google.com/cse.js?cx=c63e2327560b847f4">
-  </script>
   <div class="gcse-search"></div>
   <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
     <!-- Navigation -->
@@ -44,7 +42,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <div class="gcse-search"><img [src]="image"></div>
+          <img [src]="image">
         </div>
       </div>
     </section>

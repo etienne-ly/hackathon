@@ -1,1 +1,221 @@
-<p>form-pizza works!</p>
+<div class="pizza-form-container">
+  <div class="form-header">
+    <h2>Pizza Delivery</h2>
+    <p>Complete your order details</p>
+  </div>
+
+  <div class="form-content">
+    <div class="form-section">
+      <h3 class="section-title">
+        <span class="section-icon">👤</span>
+        Contact Information
+      </h3>
+
+      <div class="form-group">
+        <label class="form-label" for="fullName">
+          Full Name <span class="required-indicator">*</span>
+        </label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          class="form-input"
+          [class.auto-filling]="isAutoFilling"
+          [(ngModel)]="formData.fullName"
+          (focus)="handleFocus('fullName')"
+          placeholder="Click to auto-fill"
+          required
+        />
+      </div>
+
+      <div class="form-row two-cols">
+        <div class="form-group">
+          <label class="form-label" for="email">
+            <span class="label-icon">✉️</span>
+            Email <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.email"
+            (focus)="handleFocus('email')"
+            placeholder="Click to auto-fill"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">
+            <span class="label-icon">📞</span>
+            Phone Number <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.phone"
+            (focus)="handleFocus('phone')"
+            placeholder="Click to auto-fill"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="section-title">
+        <span class="section-icon">📍</span>
+        Delivery Address
+      </h3>
+
+      <div class="form-group">
+        <label class="form-label" for="address">
+          Street Address <span class="required-indicator">*</span>
+        </label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          class="form-input"
+          [class.auto-filling]="isAutoFilling"
+          [(ngModel)]="formData.address"
+          (focus)="handleFocus('address')"
+          placeholder="Click to auto-fill"
+          required
+        />
+      </div>
+
+      <div class="form-row two-cols">
+        <div class="form-group">
+          <label class="form-label" for="city">
+            City <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            class="form-input"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.city"
+            (focus)="handleFocus('city')"
+            placeholder="Click to auto-fill"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="postalCode">
+            Postal Code <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="text"
+            id="postalCode"
+            name="postalCode"
+            class="form-input"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.postalCode"
+            (focus)="handleFocus('postalCode')"
+            placeholder="Click to auto-fill"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="section-title">
+        <span class="section-icon">💳</span>
+        Payment Information
+      </h3>
+
+      <div class="form-group">
+        <label class="form-label" for="cardNumber">
+          Card Number <span class="required-indicator">*</span>
+        </label>
+        <input
+          type="text"
+          id="cardNumber"
+          name="cardNumber"
+          class="form-input card-number-input"
+          [class.auto-filling]="isAutoFilling"
+          [(ngModel)]="formData.cardNumber"
+          (focus)="handleFocus('cardNumber')"
+          placeholder="Click to auto-fill"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="cardName">
+          Name on Card <span class="required-indicator">*</span>
+        </label>
+        <input
+          type="text"
+          id="cardName"
+          name="cardName"
+          class="form-input"
+          [class.auto-filling]="isAutoFilling"
+          [(ngModel)]="formData.cardName"
+          (focus)="handleFocus('cardName')"
+          placeholder="Click to auto-fill"
+          required
+        />
+      </div>
+
+      <div class="form-row two-cols">
+        <div class="form-group">
+          <label class="form-label" for="expiryDate">
+            Expiry Date <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="text"
+            id="expiryDate"
+            name="expiryDate"
+            class="form-input"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.expiryDate"
+            (focus)="handleFocus('expiryDate')"
+            placeholder="MM/YY"
+            maxlength="5"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cvv">
+            CVV <span class="required-indicator">*</span>
+          </label>
+          <input
+            type="text"
+            id="cvv"
+            name="cvv"
+            class="form-input input-short"
+            [class.auto-filling]="isAutoFilling"
+            [(ngModel)]="formData.cvv"
+            (focus)="handleFocus('cvv')"
+            placeholder="123"
+            maxlength="3"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="submit-button"
+      (click)="handleSubmit()"
+    >
+      Place Order
+    </button>
+
+    <p class="form-note">
+      MVP Demo: Click any input to auto-fill with sample data
+    </p>
+  </div>
+</div>
