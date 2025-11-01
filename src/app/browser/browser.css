@@ -1,6 +1,8 @@
 main {
   background-color: oklch(92.9% 0.013 255.508);
   color: oklch(26.9% 0 0);
+  max-height: 100vh;
+  max-width: 100vw;
 }
 
 .tabs {
@@ -12,6 +14,7 @@ main {
 }
 
 .tab {
+  position: relative;
   display: flex;
   max-width: 14rem;
   flex: 1;
@@ -21,6 +24,7 @@ main {
   padding: 0.4rem 0.5rem;
   margin: 0.4rem 0;
   font-size: 0.8rem;
+  transition: background-color 0.2s ease-out;
 }
 
 .tab:hover {
@@ -41,10 +45,12 @@ main {
 }
 
 .tab-title {
-  font-size: 0.8rem;
+  user-select: none;
+  font-size: 0.75rem;
 }
 
 .tab-close {
+  user-select: none;
   border-radius: 100%;
   margin-left: auto;
   display: flex;
@@ -52,14 +58,16 @@ main {
   height: 1rem;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.2s ease-out;
 }
 
 .tab-close:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: default;
 }
 
-#add-tab {
+.tab-button {
+  user-select: none;
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 100%;
@@ -67,10 +75,11 @@ main {
   align-items: center;
   justify-content: center;
   margin: 0.4rem 0;
+  transition: background-color 0.2s ease-out;
 }
 
-#add-tab:hover {
-  background-color: oklch(86.9% 0.022 252.894);
+.tab-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
   cursor: default;
 }
 
@@ -79,7 +88,7 @@ main {
   padding: 0.4rem 0.8rem;
   display: flex;
   align-items: center;
-  gap: 1.2em;
+  gap: 0.6rem;
   border-bottom: 1px solid oklch(92.9% 0.013 255.508);
 }
 
@@ -90,6 +99,7 @@ main {
   padding: 0.5rem 0.6rem;
   gap: 0.4rem;
   background-color: oklch(92.9% 0.013 255.508);
+  transition: background-color 0.2s ease-out;
 }
 
 #url-field:hover {
@@ -102,4 +112,8 @@ main {
   border: none;
   outline: none;
   color: oklch(26.9% 0 0);
+}
+
+.content {
+  overflow: auto;
 }

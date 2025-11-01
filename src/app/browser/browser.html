@@ -4,18 +4,20 @@
       <div (click)="currentTab = gameService.tabs.indexOf(tab)" class="tab {{ currentTab === gameService.tabs.indexOf(tab) ? 'active' : ''}}">
         <img src="{{tab.icon}}"/>
         <div class="tab-title">{{tab.title}}</div>
-        <span (click)="currentTab = gameService.tabs.indexOf(tab) - 1; gameService.tabs.splice(gameService.tabs.indexOf(tab), 1);" class="material-symbols-rounded tab-close" style="font-size: 0.9rem;">close</span>
+        <span (click)="currentTab = gameService.tabs.indexOf(tab) - 1; gameService.tabs.splice(gameService.tabs.indexOf(tab), 1);" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
       </div>
     }
-    <span (click)="gameService.tabs.push({title: 'Untitled', url: '', icon: ''}); currentTab = gameService.tabs.length - 1" id="add-tab" class="material-symbols-rounded" style="font-size: 1.2rem;">add</span>
+    <span (click)="gameService.tabs.push({title: 'Untitled', url: '', icon: ''}); currentTab = gameService.tabs.length - 1" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">add</span>
   </section>
   <section id="url">
-    <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
-    <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
-    <span class="material-symbols-rounded" style="font-size: 1.1rem;">refresh</span>
+    <span title="Navigate to previous page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
+    <span title="Navigate to next page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
+    <span title="Reload this page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">refresh</span>
+    <span title="Monitor your home" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
+    <span title="Navigate to mail" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
     <form id="url-field" (ngSubmit)="search()">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
-      <input class="url-input" type="text" [(ngModel)]="query">
+      <input name="query" class="url-input" type="text" [(ngModel)]="query">
     </form>
   </section>
   <section class="content">
