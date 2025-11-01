@@ -32,3 +32,11 @@ export interface Tab {
 export interface DormState {
   windowOpen: boolean;
 }
+
+export interface PageContent {
+  title: string;
+  mainContent: string;
+  image: string;
+  action: string;
+  footer: string;
+}
