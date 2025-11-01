@@ -5,6 +5,18 @@ main {
   max-width: 100vw !important;
 }
 
+.notif::after {
+  content: '';
+  position: relative;
+  bottom: 3px;        /* Adjust vertical position */
+  right: 6px;      /* Adjust horizontal position */
+  width: 5px;    /* Circle size */
+  height: 5px;
+  background-color: red;
+  border-radius: 50%;
+  border: 1px solid white; /* optional, for a border around the dot */
+}
+
 .header {
   top: 0;
   left: 0;

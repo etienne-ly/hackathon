@@ -1,44 +1,56 @@
-<header>
-  <h2 style="color:{{pageContent?.color}}">{{pageContent?.title}}</h2>
-  <div>
-    <p>Headlines</p>
-    <p>Stories</p>
-    <p>Community</p>
-    <p>Newsletter</p>
+@if (!game.dorm.modemWorking) {
+  <div class="page-no-wifi">
+    <h2>No internet</h2>
+    <p>Try:</p>
+    <ul>
+      <li>Check your dorm...</li>
+      <li>Lock your windows...</li>
+      <li>Fix your modem...</li>
+    </ul>
   </div>
-  <div style="margin-left: auto">
-    <p>Write</p>
-    <p>Support</p>
-    <span class="material-symbols-rounded" style="font-size: 1.1rem">notifications</span>
-  </div>
-</header>
-<section class="highlight" style="display: flex">
-  <img style="flex: 2; max-width: 66%" src="https://picsum.photos/1920/1080" alt=""/>
-  <div style="display: flex; flex-direction: column; flex: 1; padding: 4rem; gap: 1rem;">
-    <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{pageContent?.highlightCategory}}</p>
-    <h4>{{pageContent?.highlightTitle}}</h4>
-    <p>{{pageContent?.highlightDescription}}</p>
-  </div>
-</section>
-<section>
-  <h3>Latest News</h3>
-  <div class="latest-news">
-    @for (news of pageContent?.latest; track news) {
+} @else {
+  <header>
+    <h2 style="color:{{pageContent?.color}}">{{ pageContent?.title }}</h2>
+    <div>
+      <p>Headlines</p>
+      <p>Stories</p>
+      <p>Community</p>
+      <p>Newsletter</p>
+    </div>
+    <div style="margin-left: auto">
+      <p>Write</p>
+      <p>Support</p>
+      <span class="material-symbols-rounded" style="font-size: 1.1rem">notifications</span>
+    </div>
+  </header>
+  <section class="highlight" style="display: flex">
+    <img style="flex: 2; max-width: 66%" src="https://picsum.photos/1920/1080" alt=""/>
+    <div style="display: flex; flex-direction: column; flex: 1; padding: 4rem; gap: 1rem;">
+      <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ pageContent?.highlightCategory }}</p>
+      <h4>{{ pageContent?.highlightTitle }}</h4>
+      <p>{{ pageContent?.highlightDescription }}</p>
+    </div>
+  </section>
+  <section>
+    <h3>Latest News</h3>
+    <div class="latest-news">
+      @for (news of pageContent?.latest; track news) {
         <div class="news">
           <img src="https://picsum.photos/seed/{{news.title}}/480/300" alt=""/>
-          <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{news.category}}</p>
-          <h4>{{news.title}}</h4>
-          <p>{{news.description}}</p>
+          <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ news.category }}</p>
+          <h4>{{ news.title }}</h4>
+          <p>{{ news.description }}</p>
         </div>
-    }
-  </div>
-</section>
-<footer>
-  <h2 style="font-family: 'Times New Roman', Times, serif">{{pageContent?.title}}</h2>
-  <div style="display: flex; gap: 1rem">
-    <p>Headlines</p>
-    <p>Stories</p>
-    <p>Community</p>
-    <p>Newsletter</p>
-  </div>
-</footer>
+      }
+    </div>
+  </section>
+  <footer>
+    <h2 style="font-family: 'Times New Roman', Times, serif">{{ pageContent?.title }}</h2>
+    <div style="display: flex; gap: 1rem">
+      <p>Headlines</p>
+      <p>Stories</p>
+      <p>Community</p>
+      <p>Newsletter</p>
+    </div>
+  </footer>
+}

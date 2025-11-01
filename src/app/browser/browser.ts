@@ -4,6 +4,7 @@ import {Tab} from '../models/state';
 import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
 import {MailComponent} from '../mail-page/mail-page.component';
+import {GameService} from '../service/game.service';
 
 @Component({
   selector: 'app-browser',
@@ -22,6 +23,8 @@ export class Browser {
   currentTab: number = -1;
   query: string = "";
   tabs: Tab[] = [];
+
+  constructor(public game: GameService) {}
 
   openDorm(): void {
     this.openTab("Dorm", "127.0.0.1", DormComponent)
@@ -138,5 +141,4 @@ export class Browser {
     const ref = this.replaceTab("Binocular", "https://binocular.com", Binocular);
     ref.setInput("search", this.query);
   }
-
 }

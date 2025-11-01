@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
+import {GameService} from '../service/game.service';
 
 interface Sender {
   name: string;
@@ -26,7 +27,12 @@ interface Email {
   styleUrls: ['./mail-page.component.css']
 })
 export class MailComponent implements OnInit {
+
   emails: Email[] = [];
+
+  constructor(public game: GameService) {
+  }
+
   ngOnInit(): void {
     console.log("dd")
     this.emails = this.generateEmails(50);

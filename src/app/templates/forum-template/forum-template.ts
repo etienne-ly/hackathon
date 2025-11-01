@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AiService} from '../../service/ai.service';
+import {GameService} from '../../service/game.service';
 
 interface PageContent {
   color: string;
@@ -15,7 +16,8 @@ interface PageContent {
   styleUrl: './forum-template.css',
 })
 export class ForumTemplate {
-  constructor(private api: AiService) {}
+
+  constructor(private api: AiService, public game: GameService) {}
 
   async ngOnInit() {
     this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"title\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: 'OH MY TRENDS' and following url: 'www.oh-my-trends.com'");

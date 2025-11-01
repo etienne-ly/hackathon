@@ -12,10 +12,6 @@ export interface CompletionState {
   classChoice: boolean;
 }
 
-export interface DangerState {
-  fakeEmailChance: number;
-}
-
 export interface Email {
   subject: string;
   sender: string;
@@ -32,8 +28,9 @@ export interface Tab {
 }
 
 export interface DormState {
-  windowOpen: boolean;
+  vpnUsed: boolean;
   modemWorking: boolean;
+  fixing: boolean;
 }
 
 export interface PageContent {

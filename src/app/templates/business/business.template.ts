@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
+import {GameService} from '../../service/game.service';
 
 interface PageContent {
   title: string;
@@ -20,7 +21,8 @@ interface PageContent {
   imports: [CommonModule]
 })
 export class BusinessTemplate implements OnInit {
-  constructor(private api: AiService, private imgApi : ImgApiService) {
+
+  constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService) {
   }
   image: string = "";
 
