@@ -62,7 +62,7 @@
             </div>
             <p>{{ product.name }}</p>
             <p style="font-size: 0.8rem; color: #605e5c">{{ product.rating }} | {{ product.category }}</p>
-            <p>${{ product.price }}</p>
+            <p>${{ product.price.toLocaleString('en-US') }}</p>
             <button style="align-self: flex-start; background-color: black; color: white">Order Now</button>
           </div>
         }
