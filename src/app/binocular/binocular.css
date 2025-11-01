@@ -26,20 +26,22 @@
   }
 
   .page-header-domain {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.1rem;
   }
 
   .page-header-url {
     font-size: 0.7rem;
+    color: #605e5c;
   }
 
   .page-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #1a0dab;
-    margin-bottom: 0.2rem;
+    margin: 0.6rem 0;
   }
 
   .page-description {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }

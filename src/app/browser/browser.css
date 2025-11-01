@@ -125,3 +125,7 @@ main {
   overflow: auto;
   background-color: white;
 }
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}

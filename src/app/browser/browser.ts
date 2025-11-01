@@ -8,7 +8,7 @@ import {MailComponent} from '../mail-page/mail-page.component';
 @Component({
   selector: 'app-browser',
   imports: [
-    FormsModule,
+    FormsModule
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
