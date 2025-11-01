@@ -1,8 +1,8 @@
 main {
   background-color: oklch(92.9% 0.013 255.508);
   color: oklch(26.9% 0 0);
-  max-height: 100vh;
-  max-width: 100vw;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
 }
 
 .tabs {

@@ -6,14 +6,14 @@ import {Injectable} from '@angular/core';
 export class ApiService {
   async get<T>(prompt: string): Promise<T> {
     console.log("Sent request to api");
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const res = await fetch("https://llm.chutes.ai/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer cpk_a3b427b1eb194295b94f727202913346.0bbed26ece1a53669ce3f6ba79cfb124.U8PJMHoqB9lfuijCsCMJCEQd9cDMv4CU",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "model": "deepseek/deepseek-chat-v3.1:free",
+        "model": "openai/gpt-oss-20b",
         "messages": [
           {
             "role": "user",

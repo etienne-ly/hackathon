@@ -1,0 +1,18 @@
+<section class="business-hero">
+</section>
+<div class="hero-image" >
+  <div class="hero-overlay">
+    <div class="hero-inner">
+      <h1 class="hero-title">{{pageContent?.title}}</h1>
+      <div class="hero-content" [innerHTML]="pageContent?.url"></div>
+      <a class="hero-cta" target="_blank" rel="noopener noreferrer">{{ pageContent?.ctaText }}</a>
+    </div>
+  </div>
+</div>
+
+<section class="business-body">
+  <div class="container">
+    <ng-content></ng-content>
+  </div>
+</section>
+
