@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {MailComponent} from './mail-page/mail-page.component';
+import {Browser} from './browser/browser';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MailComponent],
+  imports: [RouterOutlet, MailComponent,Browser],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
