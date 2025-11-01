@@ -39,7 +39,7 @@ export class BusinessTemplate implements OnInit {
       "}', based on the following title: 'clanker' and the following url: 'www.clanker.com'");
 
     if (this.pageContent?.title) {
-      this.image = await this.imgApi.FetchImage(this.pageContent.title);
+      this.image = await this.imgApi.getImage(this.pageContent.title);
     }
   }
 

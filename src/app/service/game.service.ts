@@ -17,7 +17,7 @@ export class GameService {
 
   public dorm: DormState = {
     vpnUsed: false,
-    modemWorking: false,
+    modemWorking: true,
     fixing: false
   };
 
