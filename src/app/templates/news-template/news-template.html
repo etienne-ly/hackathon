@@ -1,5 +1,5 @@
 <header>
-  <h3>{{pageContent?.title}}</h3>
+  <h2 style="color:{{pageContent?.color}}">{{pageContent?.title}}</h2>
   <div>
     <p>Headlines</p>
     <p>Stories</p>
@@ -12,11 +12,25 @@
     <span class="material-symbols-rounded" style="font-size: 1.1rem">notifications</span>
   </div>
 </header>
-<section>
-
+<section style="display: flex">
+  <img style="flex: 1; max-width: 50%" src="https://i.abcnewsfe.com/a/b8065184-0476-41bd-855f-3b68283c572f/shutdown-gty-er-251031_1761927512778_hpMain_16x9.jpg?w=992" alt=""/>
+  <div style="flex: 1; padding: 4rem; gap: 1rem;">
+    <h4>{{pageContent?.highlightTitle}}</h4>
+    <p>{{pageContent?.highlightDescription}}</p>
+    <p style="font-size: 0.6rem">{{pageContent?.highlightCategory}}</p>
+  </div>
 </section>
 <section>
-
+  <h3>Latest News</h3>
+  <div class="latest-news">
+    @for (news of pageContent?.latest; track news) {
+        <div class="news">
+          <h4>{{news.title}}</h4>
+          <p>{{news.description}}</p>
+          <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{news.category}}</p>
+        </div>
+    }
+  </div>
 </section>
 <footer>
 

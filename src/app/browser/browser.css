@@ -1,8 +1,8 @@
 main {
   background-color: oklch(92.9% 0.013 255.508);
   color: oklch(26.9% 0 0);
-  max-height: 100vh;
-  max-width: 100vw;
+  max-height: 100vh !important;
+  max-width: 100vw !important;
 }
 
 .tabs {
@@ -90,6 +90,8 @@ main {
   align-items: center;
   gap: 0.6rem;
   border-bottom: 1px solid oklch(92.9% 0.013 255.508);
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
 }
 
 #url-field {
