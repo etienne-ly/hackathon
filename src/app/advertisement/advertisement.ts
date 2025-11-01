@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass} from '@angular/common';
-import {AdvertisementSide} from '../models/state';
+import {AdvertisementOffsets, AdvertisementSide} from '../models/state';
 
 @Component({
   selector: 'app-advertisement',
@@ -13,10 +13,15 @@ import {AdvertisementSide} from '../models/state';
 export class Advertisement {
 
   @Input() imageSrc: string = "";
-  @Input() side: AdvertisementSide = AdvertisementSide.Bottom
+  @Input() side: AdvertisementSide = AdvertisementSide.Bottom;
+  @Input() offsets: AdvertisementOffsets = {
+    posX: 0,
+    posY: 0
+  };
   @Output() close = new EventEmitter<void>();
 
   onClose() {
+    console.log(this.side.toString().toLowerCase());
     this.close.emit();
   }
 

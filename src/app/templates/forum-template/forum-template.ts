@@ -3,6 +3,7 @@ import {AiService} from '../../service/ai.service';
 import {GameService} from '../../service/game.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {BasePage} from '../../main-components/base-page/base-page';
+import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
   color: string;
@@ -13,7 +14,9 @@ interface PageContent {
 
 @Component({
   selector: 'app-forum-template',
-  imports: [],
+  imports: [
+    Advertisement
+  ],
   templateUrl: './forum-template.html',
   styleUrl: './forum-template.css',
 })

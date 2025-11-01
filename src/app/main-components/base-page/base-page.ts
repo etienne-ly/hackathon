@@ -10,7 +10,8 @@ import {ImgApiService} from '../../service/imgApi.service';
 export class BasePage implements OnInit, OnDestroy {
 
   adTerms: string[] = [
-    "oil ad", "banner advertisement", "diddy concert promotion", "clankers unite"
+    "oil ad", "banner advertisement", "diddy concert promotion", "clankers unite",
+    "diddy oil", "clankers"
   ]
 
   advertisements: AdvertisementData[] = [];
@@ -39,18 +40,28 @@ export class BasePage implements OnInit, OnDestroy {
 
     const term = this.adTerms[Math.floor(Math.random() * this.adTerms.length)];
     const values = Object.values(AdvertisementSide) as Array<AdvertisementSide>
-    const imageSrc = await this.imageService.getImage(term);
+    const imageSrc = await this.imageService.getImage(term, this.getRandomInt(0, 5));
     const side = values[Math.floor(Math.random() * values.length)];
 
     this.advertisements.push({
       id: this.advertisements.length,
       imageSrc,
-      side
+      side,
+      offsets: {
+        posX: this.getRandomInt(-8, 8),
+        posY: this.getRandomInt(-8, 8)
+      }
     });
   }
 
   removeAd(id: number) {
-    this.advertisements.splice(id, 1);
+    this.advertisements = this.advertisements.filter(ad => ad.id !== id);
+  }
+
+  getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
 }

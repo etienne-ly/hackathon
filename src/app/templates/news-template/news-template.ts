@@ -4,6 +4,7 @@ import {ImgApiService} from '../../service/imgApi.service';
 import {CommonModule} from '@angular/common';
 import {GameService} from '../../service/game.service';
 import {BasePage} from '../../main-components/base-page/base-page';
+import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
   color: string;
@@ -16,7 +17,7 @@ interface PageContent {
 
 @Component({
   selector: 'app-news-template',
-  imports: [CommonModule],
+  imports: [CommonModule, Advertisement],
   templateUrl: './news-template.html',
   styleUrl: './news-template.css',
 })

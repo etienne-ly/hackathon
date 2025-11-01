@@ -10,6 +10,10 @@
   </div>
 } @else {
   @if (pageContent) {
+    @for (ad of advertisements; track ad) {
+      <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
+    }
+
     <div class="business-template" [style.--primary-color]="pageContent.color">
       <div class="gcse-search"></div>
       <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent.color">
