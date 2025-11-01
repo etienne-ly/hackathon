@@ -1,0 +1,24 @@
+<main>
+  <section class="tabs">
+    @for (tab of tabs; track tab) {
+      <div (click)="currentTab = tabs!.indexOf(tab)" class="tab {{ currentTab === tabs!.indexOf(tab) ? 'active' : ''}}">
+        <img src="{{tab.icon}}"/>
+        <div class="tab-title">{{tab.title}}</div>
+        <span class="material-symbols-rounded tab-close" style="font-size: 0.9rem;">close</span>
+      </div>
+    }
+    <span id="add-tab" class="material-symbols-rounded" style="font-size: 1.2rem;">add</span>
+  </section>
+  <section id="url">
+    <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
+    <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
+    <span class="material-symbols-rounded" style="font-size: 1.1rem;">refresh</span>
+    <div id="url-field">
+      <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
+      <input class="url-input" type="text" value="{{tabs![currentTab].url}}">
+    </div>
+  </section>
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>
