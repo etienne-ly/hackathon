@@ -2,22 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {GameService} from '../service/game.service';
-
-interface Sender {
-  name: string;
-  email: string;
-  DateSend: string;
-  TimeSend: string;
-}
-
-interface Email {
-  id: number;
-  subject: string;
-  sender: Sender;
-  read: boolean;
-  important: boolean;
-  content: string;
-}
+import {Email, Sender} from '../models/state';
 
 @Component({
   selector: 'app-mail',
@@ -28,14 +13,24 @@ interface Email {
 })
 export class MailComponent implements OnInit {
 
-  emails: Email[] = [];
-
   constructor(public game: GameService) {
   }
 
   ngOnInit(): void {
-    console.log("dd")
-    this.emails = this.generateEmails(50);
+    // this.emails = this.generateEmails(50);
+  }
+
+  get emailContent(): string {
+    return this.generateEmailContent(this.selectedEmail!.content, this.game.completion);
+  }
+
+  generateEmailContent(template: string, data: any): string {
+    return template
+      // Process <strike-if done="variable">content</strike-if>
+      .replace(/<strike-if done="(.*?)">(.*?)<\/strike-if>/g, (_, boolVar, content) => {
+        const shouldStrike = !!data[boolVar.trim()];
+        return shouldStrike ? `<s>${content}</s>` : content;
+      });
   }
 
   private generateEmails(count: number): Email[] {
@@ -109,6 +104,6 @@ export class MailComponent implements OnInit {
   }
 
   getUnreadCount(): number {
-    return this.emails.filter(email => !email.read).length;
+    return this.game.emails.filter(email => !email.read).length;
   }
 }
