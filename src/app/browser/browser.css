@@ -65,6 +65,9 @@ main {
 }
 
 .tab-title {
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
   user-select: none;
   font-size: 0.75rem;
 }

@@ -7,6 +7,7 @@ import {CompletionState, DormState, Email, Popup, Tab, UserInfo} from '../models
 export class GameService {
 
   public user: UserInfo;
+  public hasWifi: boolean = true;
 
   public popup: Popup = {
     visible: true,

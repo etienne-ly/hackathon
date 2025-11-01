@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 
@@ -22,6 +22,7 @@ interface FormData {
   styleUrl: './form-pizza.css',
 })
 export class FormPizza {
+  @Input() color!: string;
   formData: FormData = {
     fullName: '',
     email: '',
@@ -35,7 +36,6 @@ export class FormPizza {
     cvv: ''
   };
 
-  // MVP mock data for auto-completion (Figma-style)
   private mockData: FormData = {
     fullName: 'John Doe',
     email: 'john.doe@email.com',
