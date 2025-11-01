@@ -34,7 +34,7 @@ export class Browser {
     this.openTab("Mail", "https://insidemail.com", MailComponent)
   }
 
-  openTab(title: string, url: string, component: Type<any> = BusinessTemplate): ComponentRef<any> {
+  openTab(title: string, url: string, component: Type<any> = Binocular): ComponentRef<any> {
     this.tabs.push({
       url,
       title,
