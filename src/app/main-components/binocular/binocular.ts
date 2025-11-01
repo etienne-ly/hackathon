@@ -7,26 +7,33 @@ import {ForumTemplate} from '../../templates/forum-template/forum-template';
 import {ECommerceTemplate} from '../../templates/e-commerce.template/e-commerce.template';
 import {BusinessTemplate} from '../../templates/business/business.template';
 import {BinocularSkeleton} from './binocular-skeleton/binocular.skeleton';
+import {BasePage} from '../base-page/base-page';
+import {ImgApiService} from '../../service/imgApi.service';
+import {Advertisement} from '../../advertisement/advertisement';
 
 @Component({
   selector: 'app-binocular',
   templateUrl: './binocular.html',
   styleUrl: './binocular.css',
   imports: [
-    BinocularSkeleton
+    BinocularSkeleton,
+    Advertisement
   ]
 })
-export class Binocular implements OnInit {
+export class Binocular extends BasePage implements OnInit {
 
   @Input() replaceTab: Function = () => alert('hell nah');
   @Input() search: string = "";
   results: WebPage[] = [];
   loading: boolean = false;
 
-  constructor(public game: GameService, private aiService: AiService) {
+  constructor(public game: GameService, private aiService: AiService, imageService: ImgApiService) {
+    super(imageService);
   }
 
-  async ngOnInit(): Promise<void> {
+  override async ngOnInit(): Promise<void> {
+    super.ngOnInit();
+
     if (this.search == "") {
       return;
     }

@@ -1,10 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ImgApiService} from '../service/imgApi.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgClass} from '@angular/common';
-
-enum Side {
-  Bottom, Left, Right
-}
+import {AdvertisementSide} from '../models/state';
 
 @Component({
   selector: 'app-advertisement',
@@ -14,27 +10,15 @@ enum Side {
   templateUrl: './advertisement.html',
   styleUrl: './advertisement.css',
 })
-export class Advertisement implements OnInit {
+export class Advertisement {
 
-  imageTerms: string[] = [
-    "oil ad", "banner advertisement", "diddy concert promotion", "clankers unite"
-  ]
+  @Input() imageSrc: string = "";
+  @Input() side: AdvertisementSide = AdvertisementSide.Bottom
+  @Output() close = new EventEmitter<void>();
 
-  imageSrc: string = "";
-  side: Side = Side.Bottom
-
-  constructor(private imageService: ImgApiService) {
+  onClose() {
+    this.close.emit();
   }
 
-  async ngOnInit(): Promise<void> {
-    const term = this.imageTerms[Math.floor(Math.random() * this.imageTerms.length)];
-    const values = Object.values(Side) as Array<Side>
-    this.side = values[Math.floor(Math.random() * this.imageTerms.length)];
-    this.imageSrc = await this.imageService.getImage(term);
-  }
-
-  close(): void {
-
-  }
-
+  protected readonly onload = onload;
 }

@@ -3,6 +3,7 @@ import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {CommonModule} from '@angular/common';
 import {GameService} from '../../service/game.service';
+import {BasePage} from '../../main-components/base-page/base-page';
 
 interface PageContent {
   color: string;
@@ -19,7 +20,7 @@ interface PageContent {
   templateUrl: './news-template.html',
   styleUrl: './news-template.css',
 })
-export class NewsTemplate implements OnInit {
+export class NewsTemplate extends BasePage implements OnInit {
 
   @Input() title: string = "";
   @Input() url: string = "";
@@ -29,9 +30,12 @@ export class NewsTemplate implements OnInit {
 
   pageContent?: PageContent;
 
-  constructor(private api: AiService, public imgApi:ImgApiService, public game: GameService) { }
+  constructor(private api: AiService, public imgApi:ImgApiService, public game: GameService) {
+    super(imgApi)
+  }
 
-  async ngOnInit() {
+  override async ngOnInit() {
+    super.ngOnInit();
 
     this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +

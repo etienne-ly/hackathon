@@ -12,6 +12,16 @@ export interface CompletionState {
   classChoice: boolean;
 }
 
+export enum AdvertisementSide {
+  Left, Right, Bottom
+}
+
+export interface AdvertisementData {
+  id: number;
+  imageSrc: string;
+  side: AdvertisementSide;
+}
+
 export interface Sender {
   name: string;
   email: string;

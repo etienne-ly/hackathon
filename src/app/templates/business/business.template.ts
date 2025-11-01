@@ -5,6 +5,7 @@ import {ImgApiService} from '../../service/imgApi.service';
 import {GameService} from '../../service/game.service';
 import {LoginOverlayService} from '../../service/login.overlay.service';
 import {FormLogin} from '../../form-componentes/form-login/form-login';
+import {BasePage} from '../../main-components/base-page/base-page';
 
 interface PageContent {
   websiteName: string;
@@ -22,7 +23,7 @@ interface PageContent {
   styleUrls: ['./business.template.css'],
   imports: [CommonModule, FormLogin]
 })
-export class BusinessTemplate implements OnInit {
+export class BusinessTemplate extends BasePage implements OnInit {
 
   @Input() title: string = "";
   @Input() url: string = "";
@@ -31,9 +32,12 @@ export class BusinessTemplate implements OnInit {
   pageContent?: PageContent;
 
   constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService,public overlayService: LoginOverlayService) {
+    super(imgApi)
   }
 
-  async ngOnInit() {
+  override async ngOnInit() {
+    super.ngOnInit();
+
     console.log("Sending request to api");
     this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content ${true ? 'CONTAINING OBVIOUS GRAMMATICAL ERRORS and' : ''} FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +
@@ -50,6 +54,7 @@ export class BusinessTemplate implements OnInit {
       this.featureImage = await this.imgApi.getImage(`${this.pageContent.websiteName} features`);
     }
   }
+
   openLogin(): void {
     this.overlayService.open();
   }
