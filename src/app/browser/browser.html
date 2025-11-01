@@ -2,7 +2,7 @@
   <section class="tabs">
     @for (tab of gameService.tabs; track tab) {
       <div (click)="currentTab = gameService.tabs.indexOf(tab)" class="tab {{ currentTab === gameService.tabs.indexOf(tab) ? 'active' : ''}}">
-        <img src="{{tab.icon}}"/>
+        <img style="border-radius: 100%" src="https://picsum.photos/seed/{{tab.title}}/32"/>
         <div class="tab-title">{{tab.title}}</div>
         <span (click)="currentTab = gameService.tabs.indexOf(tab) - 1; gameService.tabs.splice(gameService.tabs.indexOf(tab), 1);" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
       </div>
