@@ -36,7 +36,7 @@
     <div class="latest-news">
       @for (news of pageContent?.latest; track news) {
         <div class="news">
-          <img src="https://picsum.photos/seed/{{news.title}}/480/300" alt=""/>
+          <img src="{{images[news.title]}}" alt=""/>
           <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ news.category }}</p>
           <h4>{{ news.title }}</h4>
           <p>{{ news.description }}</p>
