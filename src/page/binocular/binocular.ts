@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 import {WebPage} from '../../models/state';
 
@@ -10,19 +9,15 @@ import {WebPage} from '../../models/state';
 })
 export class Binocular implements OnInit {
 
-  search: string = "";
+  @Input() search: string = "";
   results: WebPage[] = [];
 
-  constructor(private route: ActivatedRoute, private aiService: AiService) {
+  constructor(private aiService: AiService) {
   }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(async params => {
-      this.search = params['search'];
-
-      this.results = await this.aiService.get<WebPage[]>(
-        `Generate in raw JSON format, a short list of fake websites, based on the search string: "${this.search}", filling this criteria: {domain: string, title: string;  description: string;  url: string;}`)
-    })
+  async ngOnInit(): Promise<void> {
+    this.results = await this.aiService.get<WebPage[]>(
+      `Generate in raw JSON format, a short list of fake websites, based on the search string: "${this.search}", filling this criteria: {domain: string, title: string;  description: string;  url: string;}`);
   }
 
 }

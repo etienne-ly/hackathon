@@ -97,8 +97,6 @@ main {
   align-items: center;
   gap: 0.6rem;
   border-bottom: 1px solid oklch(92.9% 0.013 255.508);
-  border-top-left-radius: 0.8rem;
-  border-top-right-radius: 0.8rem;
 }
 
 #url-field {
