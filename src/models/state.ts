@@ -40,3 +40,9 @@ export interface PageContent {
   action: string;
   footer: string;
 }
+
+export interface WebPage {
+  title: string;
+  description: string;
+  url: string;
+}

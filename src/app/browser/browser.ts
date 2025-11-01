@@ -1,6 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
-import {Tab} from '../../models/state';
 import {GameService} from '../../service/game.service';
 import {FormsModule} from '@angular/forms';
 

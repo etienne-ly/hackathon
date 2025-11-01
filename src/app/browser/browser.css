@@ -116,4 +116,5 @@ main {
 
 .content {
   overflow: auto;
+  background-color: white;
 }

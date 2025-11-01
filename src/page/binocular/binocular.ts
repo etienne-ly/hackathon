@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {PageBase} from '../page-base/page-base';
-import {Pizza} from '../pizza/pizza';
-import {Drivers} from '../drivers/drivers';
+import {ApiService} from '../../service/api-service';
 
 @Component({
   selector: 'app-binocular',
@@ -13,15 +11,16 @@ import {Drivers} from '../drivers/drivers';
 export class Binocular implements OnInit {
 
   search: string = "";
-  components = [Pizza, Drivers]
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private aiService: ApiService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.search = this.route.snapshot.params['search'];
 
-
+    console.log("waiting")
+    const result = await this.aiService.get(`Generate me in RAW JSON format a short list of fake websites that have 1. a title, 2. a url and 3. a description based on the search string: "${this.search}"`)
+    console.log(result);
   }
 
 }
