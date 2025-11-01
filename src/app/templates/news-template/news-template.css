@@ -1,11 +1,17 @@
+section {
+  padding: 2rem 6rem;
+}
+
 header {
   display: flex;
   gap: 1rem;
-  padding: 0 6rem;
+  padding: 1rem 6rem;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-header h3 {
+header h2 {
   font-family: "Times New Roman", Times, serif;
+  margin: 0;
 }
 
 header div {
@@ -15,6 +21,29 @@ header div {
   font-size: 0.8rem;
 }
 
+h3 {
+  margin: 0;
+}
+
 p {
   margin: 0;
+  font-size: 0.8rem;
+}
+
+.latest-news {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 12rem;
+  min-width: 12rem;
+  gap: 1rem;
+  border: 1px rgba(0, 0, 0, 0.05) solid;
+  border-radius: 1rem;
 }
