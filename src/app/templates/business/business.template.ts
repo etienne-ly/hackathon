@@ -26,10 +26,13 @@ export class BusinessTemplate implements OnInit {
 
   @Input() title: string = "";
   @Input() url: string = "";
+  image: string = "";
+  pageContent?: PageContent;
+
+
 
   constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService,public overlayService: LoginOverlayService) {
   }
-  image: string = "";
 
   async ngOnInit() {
     console.log("Sending request to api");
@@ -51,5 +54,4 @@ export class BusinessTemplate implements OnInit {
     this.overlayService.open();
   }
 
-  pageContent?: PageContent;
 }

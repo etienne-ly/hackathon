@@ -379,7 +379,16 @@
   animation: spin 1s linear infinite;
 }
 
+
+
 /* Animations */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -413,11 +422,7 @@
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

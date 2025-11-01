@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 import {GameService} from '../../service/game.service';
+import {NgIf} from '@angular/common';
 
 interface PageContent {
   websiteName: string;
@@ -14,7 +15,9 @@ interface PageContent {
 
 @Component({
   selector: 'app-e-commerce-template',
-  imports: [],
+  imports: [
+    NgIf
+  ],
   templateUrl: './e-commerce.template.html',
   styleUrl: './e-commerce.template.css',
 })
