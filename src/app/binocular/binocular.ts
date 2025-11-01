@@ -48,5 +48,4 @@ export class Binocular implements OnInit {
         return BusinessTemplate;
     }
   }
-
 }
