@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
 
 interface Sender {
   name: string;
@@ -18,14 +19,18 @@ interface Email {
 }
 
 @Component({
-  selector: 'mail-page',
+  selector: 'app-mail',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './mail-page.component.html',
   styleUrls: ['./mail-page.component.css']
 })
-export class MailComponent {
-  emails: Email[] = this.generateEmails(50);
+export class MailComponent implements OnInit {
+  emails: Email[] = [];
+  ngOnInit(): void {
+    console.log("dd")
+    this.emails = this.generateEmails(50);
+  }
 
   private generateEmails(count: number): Email[] {
     const subjects = [
@@ -34,12 +39,12 @@ export class MailComponent {
     ];
     const senderNames = ['John Smith', 'Sarah Johnson', 'Acme HR', 'No-Reply', 'Support Team', 'Team Lead', 'Alice Brown', 'Bob Green'];
     const contents = [
-      'Please review the attached document. ',
+      'Please review the attached document.',
       'Quick update on the project status.',
       'Don\'t forget to complete the form.',
       'Here are the details you requested.',
       'Thanks for your time today.',
-      '<a href="https://exemple.com">Click here</a> ',
+      '<a href="https://example.com">Click here</a>',
     ];
 
     const list: Email[] = [];
@@ -59,11 +64,13 @@ export class MailComponent {
       const content = contents[i % contents.length];
       const hasUrl = (i % 7 === 0) || (Math.random() < 0.18);
 
-      let emailContent = `Hello,\n\n${content}\n\nRegards,\n${sender.name}`;
+      // Use simple HTML in content so it renders as clickable links via [innerHTML]
+      let emailContent = `Hello,<br/><br/>${content}<br/><br/>Regards,<br/>${sender.name}`;
 
       if (hasUrl) {
         const url = `https://fake.example.com/resource/${i}`;
-        emailContent = `Hello,\n\n${content} Visit ${url}\n\nRegards,\n${sender.name}`;
+        // Insert a clear clickable anchor that points to the fake site
+        emailContent = `Hello,<br/><br/>${content} <a href="${url}" target="_blank" rel="noopener noreferrer">Visit this site</a><br/><br/>Regards,<br/>${sender.name}`;
       }
 
       const email: Email = {

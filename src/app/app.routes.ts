@@ -1,8 +1,3 @@
-import {Routes} from '@angular/router';
-import {Binocular} from '../page/binocular/binocular';
+import { Routes } from '@angular/router';
 
-export const routes: Routes = [
-  {path: 'binocular/:search', component: Binocular},
-  {path: '', component: Binocular, pathMatch: 'full'},
-  {path: '**', redirectTo: '/binocular'},
-];
+export const routes: Routes = [];
