@@ -12,8 +12,11 @@
   @if (loading){
     <app-binocular-skeleton></app-binocular-skeleton>
   } @else {
-    @for (ad of advertisements; track ad) {
-      <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
+
+    @if (results.length > 0) {
+      @for (ad of advertisements; track ad) {
+        <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
+      }
     }
 
     <section>
