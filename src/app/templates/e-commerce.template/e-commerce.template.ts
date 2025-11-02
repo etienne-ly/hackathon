@@ -4,6 +4,7 @@ import {GameService} from '../../service/game.service';
 import {NgIf} from '@angular/common';
 import {ImgApiService} from '../../service/imgApi.service';
 import {BasePage} from '../../main-components/base-page/base-page';
+import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
   websiteName: string;
@@ -17,7 +18,9 @@ interface PageContent {
 
 @Component({
   selector: 'app-e-commerce-template',
-  imports: [],
+  imports: [
+    Advertisement
+  ],
   templateUrl: './e-commerce.template.html',
   styleUrl: './e-commerce.template.css',
 })

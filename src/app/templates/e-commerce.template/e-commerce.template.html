@@ -10,6 +10,10 @@
   </div>
 } @else {
   @if (pageContent){
+    @for (ad of advertisements; track ad) {
+      <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
+    }
+
     <header>
       <h2>{{ pageContent.websiteName }}</h2>
       <div

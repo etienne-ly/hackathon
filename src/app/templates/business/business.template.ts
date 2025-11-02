@@ -6,6 +6,7 @@ import {GameService} from '../../service/game.service';
 import {LoginOverlayService} from '../../service/login.overlay.service';
 import {FormLogin} from '../../form-componentes/form-login/form-login';
 import {BasePage} from '../../main-components/base-page/base-page';
+import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
   websiteName: string;
@@ -21,7 +22,7 @@ interface PageContent {
   selector: 'app-business-template',
   templateUrl: './business.template.html',
   styleUrls: ['./business.template.css'],
-  imports: [CommonModule, FormLogin]
+  imports: [CommonModule, FormLogin, Advertisement]
 })
 export class BusinessTemplate extends BasePage implements OnInit {
 

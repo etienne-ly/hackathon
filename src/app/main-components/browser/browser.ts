@@ -5,21 +5,25 @@ import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
 import {MailComponent} from '../mail-page/mail-page.component';
 import {GameService} from '../../service/game.service';
+import {BadEndingComponent} from '../../endings/bad.ending.component';
+import {GoodEndingComponent} from '../../endings/good.ending.component';
 
 @Component({
   selector: 'app-browser',
   imports: [
     FormsModule,
+    BadEndingComponent,
+    GoodEndingComponent,
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
 })
 
 export class Browser {
+  constructor(public game: GameService) {
+  }
 
-  constructor(public game: GameService) {}
-
-  @ViewChild('container', { read: ViewContainerRef, static: true })
+  @ViewChild('container', {read: ViewContainerRef, static: true})
   container!: ViewContainerRef;
 
   currentTab: number = -1;
@@ -32,6 +36,21 @@ export class Browser {
 
   openMail(): void {
     this.openTab("Mail", "https://insidemail.com", MailComponent)
+  }
+
+  addDanger(): void {
+    this.game.danger++;
+  }
+  subDanger(): void {
+    this.game.danger--;
+  }
+
+  get hasWon(): boolean {
+    return this.game.danger <= -10;
+  }
+
+  get hasLost(): boolean {
+    return this.game.danger >= 10;
   }
 
   openTab(title: string, url: string, component: Type<any> = Binocular): ComponentRef<any> {
@@ -128,6 +147,13 @@ export class Browser {
     this.query = url;
     this.container.insert(this.tabs[this.currentTab].componentRef.hostView)
     return this.tabs[this.currentTab].componentRef;
+  }
+
+  get endingUrl(): string {
+    if (this.hasWon) {
+      return '/endings/good.ending.html';
+    }
+    return '/endings/bad.ending.component.ts';
   }
 
   search(): void {
