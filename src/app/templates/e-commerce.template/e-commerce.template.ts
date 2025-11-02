@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../../../service/api-service';
+import {AiService} from '../../../service/ai.service';
 
 interface PageContent {
   title: string;
@@ -18,7 +18,7 @@ interface PageContent {
   styleUrl: './e-commerce.template.css',
 })
 export class ECommerceTemplate implements OnInit {
-  constructor(private api: ApiService) {}
+  constructor(private api: AiService) {}
 
   async ngOnInit() {
     this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"title\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', based on the following title: 'Nicke' and following url: 'www.nicke-shop.com'");

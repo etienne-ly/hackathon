@@ -1,4 +1,7 @@
-<div class="business-template" [style.--primary-color]="pageContent?.color">
+<script async src="https://cse.google.com/cse.js?cx=c63e2327560b847f4">
+</script>
+<div class="gcse-search"></div>
+<div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
@@ -30,7 +33,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://picsum.photos/1920/1080" alt="" />
+        <div class="gcse-search"><img [src]="image"></div>
       </div>
     </div>
   </section>
@@ -41,11 +44,11 @@
       <h2 class="section-title">Our Main Features</h2>
       <div class="content-wrapper">
         <div class="features-content">
-          <p class="features-text">{{ pageContent?.content }}</p>
+          <p class="features-text">{{ pageContent?.description }}</p>
           <button class="btn-features">Learn More</button>
         </div>
         <div class="features-image">
-          <img src="https://picsum.photos/seed/a/1920/1080" alt="" />
+          <img src="https://picsum.photos/seed/a/1920/1080" alt=""/>
         </div>
       </div>
     </div>
@@ -70,9 +73,18 @@
           </div>
         </div>
       </div>
-      <button class="btn-consult">{{pageContent?.ctaText}}</button>
+      <button class="btn-consult">{{ pageContent?.ctaText }}</button>
     </div>
   </section>
-
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 {{ pageContent.title }}. All rights reserved.</p>
+      <p class="footer-url">{{ pageContent.url }}</p>
+    </div>
+  </footer>
 </div>
 
+<div class="loading-state" *ngIf="!pageContent">
+  <div class="spinner"></div>
+  <p>Loading content...</p>
+</div>
