@@ -22,16 +22,22 @@ export class BasePage implements OnInit, OnDestroy {
   private taskId: number | undefined;
 
   hasSpellingErrors: boolean;
+  wantsToKnow: boolean;
   adsRate: number;
   objective: string = "";
 
   constructor(private imageService: ImgApiService, private gameService: GameService) {
     this.hasSpellingErrors = Math.random() < 0.3;
-    this.adsRate = Math.floor(Math.random() * 10000) + 5000
+    this.adsRate = Math.floor(Math.random() * 10000) + 5000;
+    this.wantsToKnow = Math.random() < 0.3;
   }
 
   ngOnInit(): void {
     console.log(`spelling errors: ${this.hasSpellingErrors}`);
+
+    if (this.wantsToKnow) {
+      this.gameService.popup = { url: this.url, title: 'wants to know your location', visible: true, actions: [{name: 'Allow', action: () => {}}, {name: 'Deny', action: () => {}}]}
+    }
 
     this.taskId = setInterval(async () => {
       await this.tick();
@@ -44,7 +50,7 @@ export class BasePage implements OnInit, OnDestroy {
 
   checkForObjectiveCompletion() {
     console.log(this.url)
-    const valid = !this.hasSpellingErrors && this.url.startsWith("https://");
+    const valid = !this.wantsToKnow && !this.hasSpellingErrors && this.url.startsWith("https://");
     switch (this.objective) {
       case "pizza":
         if (this.gameService.completion.orderedPizzas) return;
