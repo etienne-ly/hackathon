@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {CommonModule} from '@angular/common';
+import {GameService} from '../../service/game.service';
 
 interface PageContent {
   color: string;
@@ -23,8 +24,10 @@ export class NewsTemplate implements OnInit {
   @Input() title: string = "";
   @Input() url: string = "";
 
-  constructor(private api: AiService, private imgApi:ImgApiService) { }
   imgUrl:string="";
+  pageContent?: PageContent;
+
+  constructor(private api: AiService,private imgApi:ImgApiService, public game: GameService) { }
 
   async ngOnInit() {
 
@@ -41,7 +44,4 @@ export class NewsTemplate implements OnInit {
       this.imgUrl = await this.imgApi.FetchImage(this.pageContent.websiteName);
     }
   }
-
-
-  pageContent?: PageContent;
 }

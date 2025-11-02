@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
+import {GameService} from '../../service/game.service';
 
 interface PageContent {
   websiteName: string;
@@ -24,7 +25,8 @@ export class BusinessTemplate implements OnInit {
   @Input() title: string = "";
   @Input() url: string = "";
 
-  constructor(private api: AiService, private imgApi : ImgApiService) {}
+  constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService) {
+  }
   image: string = "";
 
   async ngOnInit() {

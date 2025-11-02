@@ -12,6 +12,8 @@ import {GameService} from '../service/game.service';
   selector: 'app-browser',
   imports: [
     FormsModule,
+    BusinessTemplate,
+    NewsTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
