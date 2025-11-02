@@ -3,11 +3,15 @@ import {FormsModule} from '@angular/forms';
 import {Tab} from '../models/state';
 import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
+import {BusinessTemplate} from '../templates/business/business.template';
+import {NewsTemplate} from '../templates/news-template/news-template';
 
 @Component({
   selector: 'app-browser',
   imports: [
-    FormsModule
+    FormsModule,
+    BusinessTemplate,
+    NewsTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
