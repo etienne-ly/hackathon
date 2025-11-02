@@ -31,7 +31,7 @@
             </div>
           </div>
 
-          <p (click)="replaceTab(page.title, page.url, getComponentFromString(page.template)).setInput('title', page.title).setInput('url', page.url)" class="page-title">{{page.title}}</p>
+          <p (click)="openPage(page)" class="page-title">{{page.title}}</p>
           <p class="page-description">{{page.description}}</p>
         </div>
 

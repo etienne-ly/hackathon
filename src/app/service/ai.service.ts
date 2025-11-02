@@ -29,7 +29,7 @@ export class AiService {
 
       Rules:
       - Arrays should have at least 8 generated items.
-      ${spellingErrors ? '- Generated content has a lot of spelling errors.' : ''}
+      ${spellingErrors ? '- Generated content HAS TO HAVE a LOT of spelling errors where it becomes HARD to read.' : ''}
       - Respond with **only** valid JSON.
       - Do not include comments or explanations.
 

@@ -21,15 +21,18 @@ export class BasePage implements OnInit, OnDestroy {
   advertisements: AdvertisementData[] = [];
   private taskId: number | undefined;
 
-  hasSpellingErrors: boolean = Math.floor(Math.random() * 100) < 30;
-  adsRate: number = Math.floor(Math.random() * 10000) + 5000;
+  hasSpellingErrors: boolean;
+  adsRate: number;
   objective: string = "";
 
   constructor(private imageService: ImgApiService, private gameService: GameService) {
-    console.log(this.hasSpellingErrors);
+    this.hasSpellingErrors = Math.random() < 0.3;
+    this.adsRate = Math.floor(Math.random() * 10000) + 5000
   }
 
   ngOnInit(): void {
+    console.log(`spelling errors: ${this.hasSpellingErrors}`);
+
     this.taskId = setInterval(async () => {
       await this.tick();
     }, this.adsRate);
@@ -40,17 +43,36 @@ export class BasePage implements OnInit, OnDestroy {
   }
 
   checkForObjectiveCompletion() {
+    console.log(this.url)
     const valid = !this.hasSpellingErrors && this.url.startsWith("https://");
     switch (this.objective) {
-      case "pizza": this.gameService.completion.orderedPizzas = valid; break;
-      case "gift": this.gameService.completion.gotGift = valid; break;
-      case "cats": this.gameService.completion.seenCats = valid; break;
+      case "pizza":
+        if (this.gameService.completion.orderedPizzas) return;
+        this.gameService.completion.orderedPizzas = true;
+        break;
+      case "gift":
+        if (this.gameService.completion.gotGift) return;
+        this.gameService.completion.gotGift = true;
+        break;
+      case "cats":
+        if (this.gameService.completion.seenCats) return;
+        this.gameService.completion.seenCats = true;
+        break;
     }
+
+    if (!valid) {
+      this.gameService.danger += 4;
+    }
+
     console.log(this.objective + " " + valid);
   }
 
   async tick(): Promise<void> {
-    console.log('adding ad')
+    const valid = !this.hasSpellingErrors && this.url.startsWith("https://");
+    if (!valid && Math.random() < 0.3 && this.gameService.dorm.modemWorking) {
+      this.gameService.danger += 1;
+      this.gameService.dorm.modemWorking = false;
+    }
 
     // TODO: Add unique max per page
     if (this.advertisements.length > 10) {
