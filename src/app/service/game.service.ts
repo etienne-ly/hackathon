@@ -9,7 +9,7 @@ export class GameService {
   public user: UserInfo;
 
   public popup: Popup = {
-    visible: true,
+    visible: false,
     url: 'Movement detected',
     title: 'there is someone at your door',
     actions: [{name: 'Open', action: () => {}}, {name: 'Ignore', action: () => {}}],
@@ -46,7 +46,7 @@ export class GameService {
         <ul>
             <li><strike-if done="orderedPizzas">Order pizza for your brother's birthday</strike-if></li>
             <li><strike-if done="gotGift">Buy a gift for your dad</strike-if></li>
-            <li><strike-if done="seenCats">Visit a cat forum</strike-if></li>
+            <li><strike-if done="seenCats">Visit that one cat forum and log in</strike-if></li>
         </ul>
       `
     }
