@@ -69,7 +69,7 @@
 
         <div class="email-items">
           <div
-            *ngFor="let email of emails"
+            *ngFor="let email of game.emails"
             class="email-item"
             [class.unread]="!email.read"
             [class.selected]="selectedEmail?.id === email.id"
@@ -123,7 +123,7 @@
           </div>
         </div>
         <div class="email-detail-body">
-          <pre [innerHTML]="selectedEmail?.content"></pre>
+          <div [innerHTML]="emailContent"></div>
         </div>
       </div>
 
