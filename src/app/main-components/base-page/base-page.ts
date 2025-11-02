@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AdvertisementData, AdvertisementSide} from '../../models/state';
 import {ImgApiService} from '../../service/imgApi.service';
+import {GameService} from '../../service/game.service';
 
 @Component({
   selector: 'app-base-page',
@@ -22,9 +23,9 @@ export class BasePage implements OnInit, OnDestroy {
 
   hasSpellingErrors: boolean = Math.floor(Math.random() * 100) < 30;
   adsRate: number = Math.floor(Math.random() * 10000) + 5000;
-  objective?: "pizza" | "gift" | "cats";
+  objective: string = "";
 
-  constructor(private imageService: ImgApiService) {
+  constructor(private imageService: ImgApiService, private gameService: GameService) {
     console.log(this.hasSpellingErrors);
   }
 
@@ -38,10 +39,14 @@ export class BasePage implements OnInit, OnDestroy {
     clearInterval(this.taskId);
   }
 
-  isPageSafe(): boolean {
-    console.log(this.objective);
-    console.log(!!(!this.hasSpellingErrors && this.objective));
-    return !!(!this.hasSpellingErrors && this.objective);
+  checkForObjectiveCompletion() {
+    const valid = !this.hasSpellingErrors && this.url.startsWith("https://");
+    switch (this.objective) {
+      case "pizza": this.gameService.completion.orderedPizzas = valid; break;
+      case "gift": this.gameService.completion.gotGift = valid; break;
+      case "cats": this.gameService.completion.seenCats = valid; break;
+    }
+    console.log(this.objective + " " + valid);
   }
 
   async tick(): Promise<void> {

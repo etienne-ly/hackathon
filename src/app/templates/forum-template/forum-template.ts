@@ -6,7 +6,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
-  "objective": "pizza" | "gift" | "cats";
+  "objective": string;
   color: string;
   websiteName: string;
   trendingCategories: string[];
@@ -27,13 +27,13 @@ export class ForumTemplate extends BasePage implements OnInit {
   images: {[key: string]: string} = {};
 
   constructor(private api: AiService, public game: GameService, private imageApi: ImgApiService) {
-    super(imageApi)
+    super(imageApi, game)
   }
 
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": string, \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', this.title, this.url, this.hasSpellingErrors);
     for (let thread of this.pageContent.threads) {
       this.images[thread.title] = await this.imageApi.getImage(thread.title);
     }

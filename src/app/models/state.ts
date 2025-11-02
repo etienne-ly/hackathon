@@ -8,8 +8,8 @@ export interface UserInfo {
 
 export interface CompletionState {
   orderedPizzas: boolean;
-  driversLicense: boolean;
-  classChoice: boolean;
+  gotGift: boolean;
+  seenCats: boolean;
 }
 
 export interface AdvertisementOffsets {

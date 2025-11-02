@@ -9,7 +9,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
-  "objective": "pizza" | "gift" | "cats"
+  "objective": string;
   websiteName: string;
   email: string;
   phone: string;
@@ -32,14 +32,14 @@ export class BusinessTemplate extends BasePage implements OnInit {
   pageContent?: PageContent;
 
   constructor(private api: AiService, private imgApi : ImgApiService, public game: GameService,public overlayService: LoginOverlayService) {
-    super(imgApi)
+    super(imgApi, game)
   }
 
   override async ngOnInit() {
     super.ngOnInit();
 
     console.log("Sending request to api");
-    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": string, "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.image = await this.imgApi.getImage(this.pageContent.websiteName);

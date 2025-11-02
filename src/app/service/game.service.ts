@@ -23,8 +23,8 @@ export class GameService {
 
   public completion: CompletionState = {
     orderedPizzas: false,
-    driversLicense: false,
-    classChoice: false
+    gotGift: false,
+    seenCats: false,
   };
 
   public danger: number = 0;

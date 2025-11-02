@@ -7,7 +7,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
-  "objective": "pizza" | "gift" | "cats"
+  "objective": string;
   color: string;
   websiteName: string;
   highlightTitle: string;
@@ -30,13 +30,13 @@ export class NewsTemplate extends BasePage implements OnInit {
   pageContent?: PageContent;
 
   constructor(private api: AiService, public imgApi:ImgApiService, public game: GameService) {
-    super(imgApi)
+    super(imgApi, game)
   }
 
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": string, "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);

@@ -28,7 +28,7 @@ export class Binocular extends BasePage implements OnInit {
   loading: boolean = false;
 
   constructor(public game: GameService, private aiService: AiService, imageService: ImgApiService) {
-    super(imageService);
+    super(imageService, game);
   }
 
   override async ngOnInit(): Promise<void> {

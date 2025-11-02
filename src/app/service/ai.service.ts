@@ -17,10 +17,11 @@ export class AiService {
       Preserve the same structure and keys, but replace types with contextually accurate data.
       If an array is present, fill it with appropriate items.
 
-      If present in the template, set objective to the corresponding objective when the generated web page has content that can allow the to:
-      - Order pizza.
-      - Order a gift.
-      - Log in to a forum about cute cats.
+      Set objective to the corresponding string when the generated web page has content that:
+      - Has pizza: "pizza"
+      - Has tangible products: "gift"
+      - Has cats: "cats"
+      - Otherwise: "nothing"
 
       Context:
       Search / page title: "${title}"

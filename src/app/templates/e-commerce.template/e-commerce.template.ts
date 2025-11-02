@@ -7,7 +7,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
-  "objective": "pizza" | "gift" | "cats";
+  "objective": string;
   websiteName: string;
   promotionProduct: string;
   promotionCatch: string;
@@ -34,13 +34,13 @@ export class ECommerceTemplate extends BasePage implements OnInit {
   categoryAmounts: {[key: string]: number} = {};
 
   constructor(private api: AiService, public game: GameService, private imageApi: ImgApiService) {
-    super(imageApi);
+    super(imageApi, game);
   }
 
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": string, \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', this.title, this.url, this.hasSpellingErrors);
     this.image = await this.imageApi.getImage(`${this.pageContent.websiteName} banner`);
     for (let category of this.pageContent.categories) {
       this.categoryImages[category] = await this.imageApi.getImage(category);
