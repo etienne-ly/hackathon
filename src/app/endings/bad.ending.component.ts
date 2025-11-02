@@ -25,7 +25,7 @@
 
     h1 {
       font-family: 'Space Mono', monospace;
-      font-size: clamp(3rem, 10vw, 10rem);
+      font-size: clamp(2rem, 10vw, 10rem);
       color: #a11111;
       padding: 0rem clamp(1rem, 2vw, 3rem);
       border-radius: clamp(0.4rem, 0.75vw, 1rem);
@@ -37,8 +37,8 @@ export class BadEndingComponent implements OnInit, OnDestroy {
   private readonly letters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private interval: any = null;
 
-  text: string = "YOU LOST!";
-  displayText: string = "YOU LOST!";
+  text: string = "YOU GOT PWNED!";
+  displayText: string = "YOU GOT PWNED!";
 
   ngOnInit(): void {
     this.startScrambleLoop();

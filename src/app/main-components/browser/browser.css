@@ -159,7 +159,7 @@ main {
   position: fixed;
   top: 6rem;
   left: 4rem;
-  box-shadow: 0 0 2rem #eee;
+  box-shadow: 0 0 2rem #00000033;
 }
 
 #popup p {

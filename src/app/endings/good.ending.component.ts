@@ -25,7 +25,7 @@
 
     h1 {
       font-family: 'Space Mono', monospace;
-      font-size: clamp(3rem, 10vw, 10rem);
+      font-size: clamp(2rem, 10vw, 10rem);
       color: #065c17;
       padding: 0rem clamp(1rem, 2vw, 3rem);
       border-radius: clamp(0.4rem, 0.75vw, 1rem);

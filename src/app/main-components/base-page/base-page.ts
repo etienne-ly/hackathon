@@ -35,7 +35,7 @@ export class BasePage implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log(`spelling errors: ${this.hasSpellingErrors}`);
 
-    if (this.wantsToKnow) {
+    if (this.wantsToKnow && this.url !== "https://binocular.com") {
       this.gameService.popup = { url: this.url, title: 'wants to know your location', visible: true, actions: [{name: 'Allow', action: async () => {
         await new Promise(resolve => setTimeout(resolve, 20000));
         this.gameService.popup = {
