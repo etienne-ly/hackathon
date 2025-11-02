@@ -6,6 +6,7 @@ import {DormComponent} from '../dorm/dorm';
 import {BusinessTemplate} from '../templates/business/business.template';
 import {NewsTemplate} from '../templates/news-template/news-template';
 import {MailComponent} from '../mail-page/mail-page.component';
+import {GameService} from '../service/game.service';
 
 @Component({
   selector: 'app-browser',
@@ -19,6 +20,7 @@ import {MailComponent} from '../mail-page/mail-page.component';
 })
 
 export class Browser {
+  constructor(public gameService: GameService) {}
 
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;

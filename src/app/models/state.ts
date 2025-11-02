@@ -50,3 +50,10 @@ export interface WebPage {
   description: string;
   url: string;
 }
+
+export interface Popup {
+  visible: boolean;
+  url: string;
+  title: string;
+  actions: { name: string, action: Function }[];
+}

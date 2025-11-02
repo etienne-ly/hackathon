@@ -129,3 +129,43 @@ main {
 .cursor-pointer:hover {
   cursor: pointer;
 }
+
+#popup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 0.6rem;
+  padding: 1rem;
+  position: fixed;
+  top: 6rem;
+  left: 4rem;
+  box-shadow: 0 0 2rem #eee;
+}
+
+#popup p {
+  margin: 0;
+}
+
+#popup div {
+  min-width: 14rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  display: flex;
+  gap: 0.4rem;
+}
+
+#popup button {
+  outline: none;
+  font-size: 0.8rem;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+  background-color: oklch(92.9% 0.013 255.508);
+}
+
+#popup button:hover {
+  cursor: pointer;
+  background-color: oklch(86.9% 0.022 252.894);
+}
