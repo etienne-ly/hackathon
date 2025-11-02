@@ -36,7 +36,12 @@ export class BasePage implements OnInit, OnDestroy {
     console.log(`spelling errors: ${this.hasSpellingErrors}`);
 
     if (this.wantsToKnow) {
-      this.gameService.popup = { url: this.url, title: 'wants to know your location', visible: true, actions: [{name: 'Allow', action: () => {}}, {name: 'Deny', action: () => {}}]}
+      this.gameService.popup = { url: this.url, title: 'wants to know your location', visible: true, actions: [{name: 'Allow', action: async () => {
+        await new Promise(resolve => setTimeout(resolve, 20000));
+        this.gameService.popup = {
+          visible: true, url: 'Movement detected', title: 'there is someone at your door.', actions: [{name: 'Open', action: () => {this.gameService.danger = 10}}, {name: 'ignore', action: () => {}}]
+        }
+      }}, {name: 'Deny', action: () => {}}]}
     }
 
     this.taskId = setInterval(async () => {
