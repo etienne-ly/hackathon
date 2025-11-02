@@ -22,6 +22,10 @@ export class Binocular implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    if (this.search == "") {
+      return;
+    }
+
     this.results = await this.aiService.get<WebPage[]>(`Generate me fake webpage content FILLING this JSON format ONLY (no extra words or characters): { "template": "news" | "forum" | "e-commerce" | "business", "domain": string, "title": string, "description": string, "url": string }[12], based on the following search string: "${this.search}".`)
   }
 

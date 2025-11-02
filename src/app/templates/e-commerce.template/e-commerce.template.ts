@@ -22,6 +22,8 @@ export class ECommerceTemplate implements OnInit {
 
   @Input() title: string = "";
   @Input() url: string = "";
+  pageContent?: PageContent;
+  protected readonly Math = Math;
 
   constructor(private api: AiService, public game: GameService) {}
 
@@ -29,6 +31,4 @@ export class ECommerceTemplate implements OnInit {
     this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
   }
 
-  pageContent?: PageContent;
-  protected readonly Math = Math;
 }

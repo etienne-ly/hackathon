@@ -120,11 +120,10 @@
         </div>
       </footer>
     </div>
+
+    <div class="loading-state" *ngIf="!pageContent">
+      <div class="spinner"></div>
+      <p>Loading content...</p>
+    </div>
   </div>
 }
-
-
-<div class="loading-state" *ngIf="!pageContent">
-  <div class="spinner"></div>
-  <p>Loading content...</p>
-</div>
