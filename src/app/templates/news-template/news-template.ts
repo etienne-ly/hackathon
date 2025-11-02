@@ -37,6 +37,7 @@ export class NewsTemplate extends BasePage implements OnInit {
     super.ngOnInit();
 
     this.pageContent = await this.api.get<PageContent>('{ "objective": string, "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
+    this.objective = this.pageContent.objective;
 
     if (this.pageContent?.websiteName) {
       this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);
@@ -45,7 +46,5 @@ export class NewsTemplate extends BasePage implements OnInit {
     for (let latest of this.pageContent.latest) {
       this.images[latest.title] = await this.imgApi.getImage(latest.title)
     }
-
-    this.objective = this.pageContent.objective;
   }
 }

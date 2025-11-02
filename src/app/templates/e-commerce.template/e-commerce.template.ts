@@ -41,6 +41,7 @@ export class ECommerceTemplate extends BasePage implements OnInit {
     super.ngOnInit();
 
     this.pageContent = await this.api.get<PageContent>('{ "objective": string, \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', this.title, this.url, this.hasSpellingErrors);
+    this.objective = this.pageContent.objective;
     this.image = await this.imageApi.getImage(`${this.pageContent.websiteName} banner`);
     for (let category of this.pageContent.categories) {
       this.categoryImages[category] = await this.imageApi.getImage(category);
@@ -50,7 +51,5 @@ export class ECommerceTemplate extends BasePage implements OnInit {
     for (let product of this.pageContent.products) {
       this.productImages[product.name] = await this.imageApi.getImage(product.name);
     }
-
-    this.objective = this.pageContent.objective;
   }
 }

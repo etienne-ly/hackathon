@@ -40,13 +40,12 @@ export class BusinessTemplate extends BasePage implements OnInit {
 
     console.log("Sending request to api");
     this.pageContent = await this.api.get<PageContent>('{ "objective": string, "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
+    this.objective = this.pageContent.objective;
 
     if (this.pageContent?.websiteName) {
       this.image = await this.imgApi.getImage(this.pageContent.websiteName);
       this.featureImage = await this.imgApi.getImage(`${this.pageContent.websiteName} features`);
     }
-
-    this.objective = this.pageContent.objective;
   }
 
   openLogin(): void {

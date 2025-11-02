@@ -34,10 +34,9 @@ export class ForumTemplate extends BasePage implements OnInit {
     super.ngOnInit();
 
     this.pageContent = await this.api.get<PageContent>('{ "objective": string, \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', this.title, this.url, this.hasSpellingErrors);
+    this.objective = this.pageContent.objective;
     for (let thread of this.pageContent.threads) {
       this.images[thread.title] = await this.imageApi.getImage(thread.title);
     }
-
-    this.objective = this.pageContent.objective;
   }
 }
