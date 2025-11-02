@@ -4,6 +4,9 @@ import {GameService} from '../../service/game.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
+import {LoginOverlayService} from '../../service/login.overlay.service';
+import {FormLogin} from '../../form-componentes/form-login/form-login';
+import {NgIf} from '@angular/common';
 
 interface PageContent {
   "objective": string;
@@ -16,7 +19,9 @@ interface PageContent {
 @Component({
   selector: 'app-forum-template',
   imports: [
-    Advertisement
+    Advertisement,
+    FormLogin,
+    NgIf
   ],
   templateUrl: './forum-template.html',
   styleUrl: './forum-template.css',
@@ -26,7 +31,7 @@ export class ForumTemplate extends BasePage implements OnInit {
   pageContent?: PageContent;
   images: {[key: string]: string} = {};
 
-  constructor(private api: AiService, public game: GameService, private imageApi: ImgApiService) {
+  constructor(private api: AiService, public game: GameService, private imageApi: ImgApiService, public loginOverlayService: LoginOverlayService) {
     super(imageApi, game)
   }
 
