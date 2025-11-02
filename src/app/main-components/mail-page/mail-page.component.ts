@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
-import {GameService} from '../service/game.service';
-import {Email, Sender} from '../models/state';
+import {GameService} from '../../service/game.service';
+import {Email, Sender} from '../../models/state';
 
 @Component({
   selector: 'app-mail',

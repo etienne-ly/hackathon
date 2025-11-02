@@ -1,11 +1,11 @@
 import {Component, Input, OnInit, Type} from '@angular/core';
-import {AiService} from '../service/ai.service';
-import {WebPage} from '../models/state';
-import {GameService} from '../service/game.service';
-import {NewsTemplate} from '../templates/news-template/news-template';
-import {ForumTemplate} from '../templates/forum-template/forum-template';
-import {ECommerceTemplate} from '../templates/e-commerce.template/e-commerce.template';
-import {BusinessTemplate} from '../templates/business/business.template';
+import {AiService} from '../../service/ai.service';
+import {WebPage} from '../../models/state';
+import {GameService} from '../../service/game.service';
+import {NewsTemplate} from '../../templates/news-template/news-template';
+import {ForumTemplate} from '../../templates/forum-template/forum-template';
+import {ECommerceTemplate} from '../../templates/e-commerce.template/e-commerce.template';
+import {BusinessTemplate} from '../../templates/business/business.template';
 import {BinocularSkeleton} from './binocular-skeleton/binocular.skeleton';
 
 @Component({
