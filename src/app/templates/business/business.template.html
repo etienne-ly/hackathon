@@ -10,14 +10,14 @@
   </div>
 } @else {
   @if (pageContent) {
-    <div class="business-template" [style.--primary-color]="pageContent?.color">
+    <div class="business-template" [style.--primary-color]="pageContent.color">
       <div class="gcse-search"></div>
-      <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
+      <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent.color">
         <!-- Navigation -->
         <nav class="navbar">
           <div class="nav-container">
             <div class="nav-brand">
-              <span class="brand-name">{{ pageContent?.websiteName }}</span>
+              <span class="brand-name">{{ pageContent.websiteName }}</span>
             </div>
             <ul class="nav-menu">
               <li><a href="#home">Home</a></li>
@@ -39,10 +39,10 @@
         <section class="hero-section">
           <div class="hero-container">
             <div class="hero-content">
-              <h1 class="hero-title">{{ pageContent?.websiteName }}</h1>
-              <p class="hero-description">{{ pageContent?.description }}</p>
+              <h1 class="hero-title">{{ pageContent.websiteName }}</h1>
+              <p class="hero-description">{{ pageContent.description }}</p>
               <div class="hero-actions">
-                <button class="btn-primary">{{ pageContent?.ctaText }}</button>
+                <button class="btn-primary">{{ pageContent.ctaText }}</button>
                 <button class="btn-secondary">
                   <span class="play-icon">▶</span>
                   Watch Intro
@@ -61,7 +61,7 @@
             <h2 class="section-title">Our Main Features</h2>
             <div class="content-wrapper">
               <div class="features-content">
-                <p class="features-text">{{ pageContent?.description }}</p>
+                <p class="features-text">{{ pageContent.description }}</p>
                 <button class="btn-features">Learn More</button>
               </div>
               <div class="features-image">
@@ -79,18 +79,18 @@
                 <span class="contact-icon">📧</span>
                 <div>
                   <div class="contact-label">Email</div>
-                  <div class="contact-value">{{ pageContent?.email }}</div>
+                  <div class="contact-value">{{ pageContent.email }}</div>
                 </div>
               </div>
               <div class="contact-item">
                 <span class="contact-icon">📞</span>
                 <div>
                   <div class="contact-label">Call Us</div>
-                  <div class="contact-value">{{ pageContent?.phone }}</div>
+                  <div class="contact-value">{{ pageContent.phone }}</div>
                 </div>
               </div>
             </div>
-            <button class="btn-consult">{{ pageContent?.ctaText }}</button>
+            <button class="btn-consult">{{ pageContent.ctaText }}</button>
             <div class="overlay-backdrop" *ngIf="overlayService.isOpen()" (click)="overlayService.close()">
               <div class="overlay-container" (click)="$event.stopPropagation()">
                 <app-form-login></app-form-login>

@@ -35,7 +35,7 @@ export class BusinessTemplate implements OnInit {
 
   async ngOnInit() {
     console.log("Sending request to api");
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
+    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content ${true ? 'CONTAINING OBVIOUS GRAMMATICAL ERRORS and' : ''} FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +
       "  \"email\": string,\n" +
       "  \"phone\": string,\n" +

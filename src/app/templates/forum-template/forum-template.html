@@ -11,13 +11,13 @@
 } @else {
   @if (pageContent){
     <header>
-      <h2 style="color: {{pageContent?.color}}">{{ pageContent?.websiteName }}</h2>
+      <h2 style="color: {{pageContent.color}}">{{ pageContent.websiteName }}</h2>
       <div
         style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; background-color:#eee;; padding: 0.4rem 0.8rem;">
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
         <input type="text" placeholder="Search any topic">
       </div>
-      <button style="color: white; background-color: {{pageContent?.color}}">Login</button>
+      <button style="color: white; background-color: {{pageContent.color}}">Login</button>
     </header>
     <div style="display: flex">
       <nav>
@@ -26,17 +26,17 @@
         <p>Communities</p>
         <p>Discover</p>
         <h5 style="margin-top: 2rem;">Trending Threads</h5>
-        @for (trending of pageContent?.trendingCategories; track trending) {
+        @for (trending of pageContent.trendingCategories; track trending) {
           <p>{{ trending }}</p>
         }
       </nav>
       <section style="display: flex; flex-direction: column; gap: 2rem; padding: 2rem 0;">
-        @for (thread of pageContent?.threads; track thread) {
+        @for (thread of pageContent.threads; track thread) {
           <div style="display: flex; flex-direction: column; gap: 0.4rem;">
             <div style="display: flex; align-items: center; gap: 0.4rem">
               <h3>{{ thread.title }}</h3>
               <p
-                style="font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 100rem; background-color: {{pageContent?.color}}33; color: {{pageContent?.color}}">{{ thread.category }}</p>
+                style="font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 100rem; background-color: {{pageContent.color}}33; color: {{pageContent.color}}">{{ thread.category }}</p>
             </div>
             <p style="font-size: 0.8rem">{{ thread.description }}</p>
             <div style="height: 24rem; width: 48rem">
@@ -60,7 +60,7 @@
       </section>
     </div>
     <footer>
-      <p>{{ pageContent?.websiteName }} 2025, all rights reserved</p>
+      <p>{{ pageContent.websiteName }} 2025, all rights reserved</p>
     </footer>
   }@else {
     <div class="loading-state">

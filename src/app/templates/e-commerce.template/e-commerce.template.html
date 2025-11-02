@@ -11,7 +11,7 @@
 } @else {
   @if (pageContent){
     <header>
-      <h2>{{ pageContent?.websiteName }}</h2>
+      <h2>{{ pageContent.websiteName }}</h2>
       <div
         style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; border: 1px solid oklch(90% 0 0); padding: 0.4rem 0.8rem;">
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
@@ -23,7 +23,7 @@
       </div>
     </header>
     <nav>
-      @for (page of pageContent?.subPages; track page) {
+      @for (page of pageContent.subPages; track page) {
         <p>{{ page.toUpperCase() }}</p>
       }
     </nav>
@@ -32,14 +32,14 @@
            src="{{image}}">
       <div
         style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 33%; gap: 1rem; position: absolute; left: 4rem; top: 0; text-shadow: 0 0 2rem black; color: white;">
-        <h4>{{ pageContent?.promotionProduct }}</h4>
-        <h2>{{ pageContent?.promotionCatch }}</h2>
-        <p>{{ pageContent?.promotionDescription }}</p>
+        <h4>{{ pageContent.promotionProduct }}</h4>
+        <h2>{{ pageContent.promotionCatch }}</h2>
+        <p>{{ pageContent.promotionDescription }}</p>
         <button>Shop Now</button>
       </div>
     </section>
     <section style="display: flex; gap: 2rem; justify-content: center">
-      @for (category of pageContent?.categories; track category) {
+      @for (category of pageContent.categories; track category) {
         <div
           style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 6rem; max-width: 6rem;">
           <div style="height: 4rem; width: 4rem">
@@ -55,7 +55,7 @@
     <section style="display: flex; flex-direction: column; gap: 1rem">
       <h3>Popular products</h3>
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center">
-        @for (product of pageContent?.products; track product) {
+        @for (product of pageContent.products; track product) {
           <div style="display: flex; flex-direction: column; gap: 0.4rem; min-width: 10rem; max-width: 10rem;">
             <div style="height: 10rem; width: 10rem">
               <img style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem;" src="{{productImages[product.name]}}" alt="">
@@ -69,7 +69,7 @@
       </div>
     </section>
     <footer>
-      <p>{{ pageContent?.websiteName }} 2025, all rights reserved</p>
+      <p>{{ pageContent.websiteName }} 2025, all rights reserved</p>
     </footer>
   } @else {
     <div class="loading-state">
