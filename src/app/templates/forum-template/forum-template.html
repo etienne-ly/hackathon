@@ -10,7 +10,7 @@
   </div>
 } @else {
   <header>
-    <h2 style="color: {{pageContent?.color}}">{{ pageContent?.title }}</h2>
+    <h2 style="color: {{pageContent?.color}}">{{ pageContent?.websiteName }}</h2>
     <div
       style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; background-color:#eee;; padding: 0.4rem 0.8rem;">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
@@ -35,7 +35,7 @@
           <div style="display: flex; align-items: center; gap: 0.4rem">
             <h3>{{ thread.title }}</h3>
             <p
-              style="font-size: 0.8rem; padding: 0.2rem 0.4rem; background-color: #eee; border-radius: 100rem; background-color: {{pageContent?.color}}33; color: {{pageContent?.color}}">{{ thread.category }}</p>
+              style="font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 100rem; background-color: {{pageContent?.color}}33; color: {{pageContent?.color}}">{{ thread.category }}</p>
           </div>
           <p style="font-size: 0.8rem">{{ thread.description }}</p>
           <img style="border-radius: 1rem; max-width: 48rem;" src="https://picsum.photos/seed/{{thread.title}}/800/480"
@@ -58,6 +58,6 @@
     </section>
   </div>
   <footer>
-    <p>{{ pageContent?.title }} 2025, all rights reserved</p>
+    <p>{{ pageContent?.websiteName }} 2025, all rights reserved</p>
   </footer>
 }

@@ -10,7 +10,7 @@
   </div>
 } @else {
   <header>
-    <h2>{{ pageContent?.title }}</h2>
+    <h2>{{ pageContent?.websiteName }}</h2>
     <div
       style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; border: 1px solid oklch(90% 0 0); padding: 0.4rem 0.8rem;">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
@@ -28,7 +28,7 @@
   </nav>
   <section>
     <img style="max-width: 100%; background-image:linear-gradient(#1e40af,#101010) "
-         src="https://picsum.photos/1920/720">
+         src="https://picsum.photos/seed/{{pageContent?.websiteName}}/1920/720">
     <div
       style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 33%; gap: 1rem; position: absolute; left: 4rem; top: 0; text-shadow: 0 0 2rem black; color: white;">
       <h4>{{ pageContent?.promotionProduct }}</h4>
@@ -64,6 +64,6 @@
     </div>
   </section>
   <footer>
-    <p>{{ pageContent?.title }} 2025, all rights reserved</p>
+    <p>{{ pageContent?.websiteName }} 2025, all rights reserved</p>
   </footer>
 }

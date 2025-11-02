@@ -9,23 +9,6 @@
     </ul>
   </div>
 } @else {
-  <div class="gcse-search"></div>
-  <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="nav-brand">
-          <span class="brand-name">{{ pageContent?.title }}</span>
-        </div>
-        <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="menu-toggle">☰</button>
-      </div>
-    </nav>
 <div class="gcse-search"></div>
 <div class="business-template" *ngIf="pageContent" [style.--primary-color]="pageContent?.color">
   <!-- Navigation -->
@@ -48,7 +31,7 @@
     <section class="hero-section">
       <div class="hero-container">
         <div class="hero-content">
-          <h1 class="hero-title">{{ pageContent?.title }}</h1>
+          <h1 class="hero-title">{{ pageContent?.websiteName }}</h1>
           <p class="hero-description">{{ pageContent?.description }}</p>
           <div class="hero-actions">
             <button class="btn-primary">{{ pageContent?.ctaText }}</button>
@@ -104,7 +87,7 @@
     </section>
     <footer class="footer">
       <div class="footer-container">
-        <p>&copy; 2025 {{ pageContent.title }}. All rights reserved.</p>
+        <p>&copy; 2025 {{ pageContent.websiteName }}. All rights reserved.</p>
         <p class="footer-url">{{ pageContent.url }}</p>
       </div>
     </footer>
