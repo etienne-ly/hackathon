@@ -19,8 +19,6 @@ interface PageContent {
 })
 export class ForumTemplate extends BasePage implements OnInit {
 
-  @Input() title: string = "";
-  @Input() url: string = "";
   pageContent?: PageContent;
   images: {[key: string]: string} = {};
 
@@ -31,7 +29,7 @@ export class ForumTemplate extends BasePage implements OnInit {
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
+    this.pageContent = await this.api.get<PageContent>('{ \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', this.title, this.url, this.hasSpellingErrors);
     for (let thread of this.pageContent.threads) {
       this.images[thread.title] = await this.imageApi.getImage(thread.title);
     }

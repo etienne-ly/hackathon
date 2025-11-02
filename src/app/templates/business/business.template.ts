@@ -25,8 +25,6 @@ interface PageContent {
 })
 export class BusinessTemplate extends BasePage implements OnInit {
 
-  @Input() title: string = "";
-  @Input() url: string = "";
   image: string = "";
   featureImage: string = "";
   pageContent?: PageContent;
@@ -39,15 +37,7 @@ export class BusinessTemplate extends BasePage implements OnInit {
     super.ngOnInit();
 
     console.log("Sending request to api");
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content ${true ? 'CONTAINING OBVIOUS GRAMMATICAL ERRORS and' : ''} FILLING this format ONLY (no extra words or characters): '{\n" +
-      "  \"color\": string,\n" +
-      "  \"email\": string,\n" +
-      "  \"phone\": string,\n" +
-      "  \"address\": string,\n" +
-      "  \"websiteName\": string,\n" +
-      "  \"description\": string,\n" +
-      "  \"ctaText\": string\n" +
-      "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
+    this.pageContent = await this.api.get<PageContent>('{ "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.image = await this.imgApi.getImage(this.pageContent.websiteName);

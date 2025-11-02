@@ -22,9 +22,6 @@ interface PageContent {
 })
 export class NewsTemplate extends BasePage implements OnInit {
 
-  @Input() title: string = "";
-  @Input() url: string = "";
-
   imgUrl:string="";
   images: {[key: string]: string} = {};
 
@@ -37,14 +34,7 @@ export class NewsTemplate extends BasePage implements OnInit {
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
-      "  \"color\": string,\n" +
-      "  \"websiteName\": string,\n" +
-      "  \"highlightTitle\": string,\n" +
-      "  \"highlightDescription\": string,\n" +
-      "  \"highlightCategory\": string,\n" +
-      "  \"latest\": { \"title\": string, \"description\": string, \"category\": string }[9]\n" +
-      "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
+    this.pageContent = await this.api.get<PageContent>('{ "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);

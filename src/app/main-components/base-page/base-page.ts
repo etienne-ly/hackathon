@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AdvertisementData, AdvertisementSide} from '../../models/state';
 import {ImgApiService} from '../../service/imgApi.service';
 
@@ -13,16 +13,24 @@ export class BasePage implements OnInit, OnDestroy {
     "oil ad", "banner advertisement", "diddy concert promotion", "clankers unite"
   ]
 
+  @Input() title: string = "";
+  @Input() url: string = "";
+
   advertisements: AdvertisementData[] = [];
   private taskId: number | undefined;
 
+  isPageSafe: boolean = false;
+  hasSpellingErrors: boolean = Math.floor(Math.random() * 100) < 30;
+
   constructor(private imageService: ImgApiService) {
+    console.log(this.hasSpellingErrors);
   }
 
   ngOnInit(): void {
     this.taskId = setInterval(async () => {
       await this.tick();
     }, 1000);
+    this.isPageSafe = this.advertisements.length < 5 && this.url.startsWith("https");
   }
 
   ngOnDestroy(): void {

@@ -23,8 +23,6 @@ interface PageContent {
 })
 export class ECommerceTemplate extends BasePage implements OnInit {
 
-  @Input() title: string = "";
-  @Input() url: string = "";
   pageContent?: PageContent;
   image: string = "";
   categoryImages: {[key: string]: string} = {};
@@ -38,7 +36,7 @@ export class ECommerceTemplate extends BasePage implements OnInit {
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
+    this.pageContent = await this.api.get<PageContent>('{ \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', this.title, this.url, this.hasSpellingErrors);
     this.image = await this.imageApi.getImage(`${this.pageContent.websiteName} banner`);
     for (let category of this.pageContent.categories) {
       this.categoryImages[category] = await this.imageApi.getImage(category);
