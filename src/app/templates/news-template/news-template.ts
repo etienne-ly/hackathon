@@ -41,7 +41,7 @@ export class NewsTemplate implements OnInit {
       "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
 
     if (this.pageContent?.websiteName) {
-      this.imgUrl = await this.imgApi.FetchImage(this.pageContent.websiteName);
+      this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);
     }
   }
 }

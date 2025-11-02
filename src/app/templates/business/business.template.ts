@@ -44,7 +44,7 @@ export class BusinessTemplate implements OnInit {
       "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
 
     if (this.pageContent?.websiteName) {
-      this.image = await this.imgApi.FetchImage(this.pageContent.websiteName);
+      this.image = await this.imgApi.getImage(this.pageContent.websiteName);
     }
   }
   openLogin(): void {
