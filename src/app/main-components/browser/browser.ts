@@ -1,4 +1,4 @@
-import {Component, ComponentRef, Type, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentRef, OnInit, Type, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Tab} from '../../models/state';
 import {Binocular} from '../binocular/binocular';
@@ -19,8 +19,13 @@ import {GoodEndingComponent} from '../../endings/good.ending.component';
   styleUrl: './browser.css',
 })
 
-export class Browser {
+export class Browser implements OnInit {
+
   constructor(public game: GameService) {
+  }
+
+  ngOnInit(): void {
+    this.openMail();
   }
 
   @ViewChild('container', {read: ViewContainerRef, static: true})
@@ -38,19 +43,12 @@ export class Browser {
     this.openTab("Mail", "https://insidemail.com", MailComponent)
   }
 
-  addDanger(): void {
-    this.game.danger++;
-  }
-  subDanger(): void {
-    this.game.danger--;
-  }
-
   get hasWon(): boolean {
-    return this.game.danger <= -10;
+    return Object.values(this.game.completion).every(value => value === true) && this.game.danger < 4;
   }
 
   get hasLost(): boolean {
-    return this.game.danger >= 10;
+    return this.game.danger >= 8 || (Object.values(this.game.completion).every(value => value === true) && this.game.danger >= 4);
   }
 
   openTab(title: string, url: string, component: Type<any> = Binocular): ComponentRef<any> {

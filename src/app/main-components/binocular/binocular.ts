@@ -29,6 +29,7 @@ export class Binocular extends BasePage implements OnInit {
 
   constructor(public game: GameService, private aiService: AiService, imageService: ImgApiService) {
     super(imageService, game);
+    this.hasSpellingErrors = false;
   }
 
   override async ngOnInit(): Promise<void> {
@@ -41,9 +42,19 @@ export class Binocular extends BasePage implements OnInit {
 
     this.results = await this.aiService.get<WebPage[]>('[{ "template": "news" | "forum" | "e-commerce" | "business", "domain": string, "title": string, "description": string, "url": string }][', this.search, '', false);
     for (let res of this.results) {
-      res.url = (Math.floor(Math.random() * 100) < 40 ? "https" : "http") + "://" + res.url;
+      const htt = (Math.floor(Math.random() * 100) < 40 ? "https" : "http") + "://";
+
+      res.url = res.url.replace("https://", "");
+      res.url = res.url.replace("http://", "");
+      res.url = htt + res.url;
     }
     this.loading = false;
+  }
+
+  openPage(page: WebPage) {
+    const ref = this.replaceTab(page.title, page.url, this.getComponentFromString(page.template))
+    ref.setInput('title', page.title)
+    ref.setInput('url', page.url)
   }
 
   getComponentFromString(value: 'news' | 'forum' | 'e-commerce' | 'business'): Type<any> {

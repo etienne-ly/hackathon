@@ -45,7 +45,8 @@ export class GameService {
         <p>Hello son, here's a list of chores for you...</p>
         <ul>
             <li><strike-if done="orderedPizzas">Order pizza for your brother's birthday</strike-if></li>
-            <li><strike-if done="cleanRoom">Clean your room</strike-if></li>
+            <li><strike-if done="gotGift">Buy a gift for your dad</strike-if></li>
+            <li><strike-if done="seenCats">Visit a cat forum</strike-if></li>
         </ul>
       `
     }
