@@ -19,7 +19,7 @@
             style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
       <span title="Reload this page" class="material-symbols-rounded tab-button"
             style="font-size: 1.1rem;">refresh</span>
-      <span [class.notif]="!this.game.dorm.modemWorking" (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button"
+      <span [class.notif]="!this.gameService.dorm.modemWorking" (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button"
             style="font-size: 1.1rem;">home</span>
       <span (click)="openMail()" title="Navigate to mail" class="material-symbols-rounded tab-button"
             style="font-size: 1.1rem;">mail</span>
