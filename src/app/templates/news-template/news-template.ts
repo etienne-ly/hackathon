@@ -7,6 +7,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
+  "objective": "pizza" | "gift" | "cats"
   color: string;
   websiteName: string;
   highlightTitle: string;
@@ -35,7 +36,7 @@ export class NewsTemplate extends BasePage implements OnInit {
   override async ngOnInit() {
     super.ngOnInit();
 
-    this.pageContent = await this.api.get<PageContent>('{ "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", "color": string, "websiteName": string, "highlightTitle": string, "highlightDescription": string, "highlightCategory": string, "latest": { "title": string, "description": string, "category": string }[10] }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);
@@ -44,5 +45,7 @@ export class NewsTemplate extends BasePage implements OnInit {
     for (let latest of this.pageContent.latest) {
       this.images[latest.title] = await this.imgApi.getImage(latest.title)
     }
+
+    this.objective = this.pageContent.objective;
   }
 }

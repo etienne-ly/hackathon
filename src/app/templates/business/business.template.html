@@ -30,7 +30,7 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
-              <button type="button" class="btn-login-nav" (click)="openLogin()">
+              <button type="button" class="btn-login-nav" (click)="openLogin(); this.isPageSafe()">
                 <span class="login-icon">👤</span>
                 Login
               </button>

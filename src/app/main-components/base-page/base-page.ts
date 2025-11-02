@@ -20,8 +20,9 @@ export class BasePage implements OnInit, OnDestroy {
   advertisements: AdvertisementData[] = [];
   private taskId: number | undefined;
 
-  isPageSafe: boolean = false;
   hasSpellingErrors: boolean = Math.floor(Math.random() * 100) < 30;
+  adsRate: number = Math.floor(Math.random() * 10000) + 5000;
+  objective?: "pizza" | "gift" | "cats";
 
   constructor(private imageService: ImgApiService) {
     console.log(this.hasSpellingErrors);
@@ -30,12 +31,17 @@ export class BasePage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.taskId = setInterval(async () => {
       await this.tick();
-    }, 1000);
-    this.isPageSafe = this.advertisements.length < 5 && this.url.startsWith("https");
+    }, this.adsRate);
   }
 
   ngOnDestroy(): void {
     clearInterval(this.taskId);
+  }
+
+  isPageSafe(): boolean {
+    console.log(this.objective);
+    console.log(!!(!this.hasSpellingErrors && this.objective));
+    return !!(!this.hasSpellingErrors && this.objective);
   }
 
   async tick(): Promise<void> {

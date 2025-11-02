@@ -9,6 +9,7 @@ import {BasePage} from '../../main-components/base-page/base-page';
 import {Advertisement} from '../../advertisement/advertisement';
 
 interface PageContent {
+  "objective": "pizza" | "gift" | "cats"
   websiteName: string;
   email: string;
   phone: string;
@@ -38,16 +39,17 @@ export class BusinessTemplate extends BasePage implements OnInit {
     super.ngOnInit();
 
     console.log("Sending request to api");
-    this.pageContent = await this.api.get<PageContent>('{ "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
+    this.pageContent = await this.api.get<PageContent>('{ "objective": "pizza" | "gift" | "cats", "websiteName": string, "email": string, "phone": string, "address": string, "color": string, "url": string, "description": string, "ctaText": string }', this.title, this.url, this.hasSpellingErrors);
 
     if (this.pageContent?.websiteName) {
       this.image = await this.imgApi.getImage(this.pageContent.websiteName);
       this.featureImage = await this.imgApi.getImage(`${this.pageContent.websiteName} features`);
     }
+
+    this.objective = this.pageContent.objective;
   }
 
   openLogin(): void {
     this.overlayService.open();
   }
-
 }
