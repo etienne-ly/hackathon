@@ -6,13 +6,15 @@ import {DormComponent} from '../dorm/dorm';
 import {BusinessTemplate} from '../templates/business/business.template';
 import {NewsTemplate} from '../templates/news-template/news-template';
 import {MailComponent} from '../mail-page/mail-page.component';
+import {FormPizza} from '../form-pizza/form-pizza';
 
 @Component({
   selector: 'app-browser',
   imports: [
     FormsModule,
     BusinessTemplate,
-    NewsTemplate
+    NewsTemplate,
+    FormPizza
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
