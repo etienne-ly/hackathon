@@ -3,8 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {Tab} from '../models/state';
 import {Binocular} from '../binocular/binocular';
 import {DormComponent} from '../dorm/dorm';
-import {BusinessTemplate} from '../templates/business/business.template';
-import {NewsTemplate} from '../templates/news-template/news-template';
 import {MailComponent} from '../mail-page/mail-page.component';
 import {GameService} from '../service/game.service';
 
@@ -12,8 +10,6 @@ import {GameService} from '../service/game.service';
   selector: 'app-browser',
   imports: [
     FormsModule,
-    BusinessTemplate,
-    NewsTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
