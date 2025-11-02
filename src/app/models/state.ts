@@ -45,6 +45,7 @@ export interface PageContent {
 }
 
 export interface WebPage {
+  template: 'news' | 'forum' | 'e-commerce' | 'business';
   domain: string;
   title: string;
   description: string;

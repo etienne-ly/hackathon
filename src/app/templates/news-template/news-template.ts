@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {CommonModule} from '@angular/common';
 
 interface PageContent {
   color: string;
-  title: string;
+  websiteName: string;
   highlightTitle: string;
   highlightDescription: string;
   highlightCategory: string;
@@ -19,22 +19,26 @@ interface PageContent {
   styleUrl: './news-template.css',
 })
 export class NewsTemplate implements OnInit {
-  constructor(private api: AiService,private imgApi:ImgApiService) { }
+
+  @Input() title: string = "";
+  @Input() url: string = "";
+
+  constructor(private api: AiService, private imgApi:ImgApiService) { }
   imgUrl:string="";
 
   async ngOnInit() {
 
-    this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
+    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
       "  \"color\": string,\n" +
-      "  \"title\": string,\n" +
+      "  \"websiteName\": string,\n" +
       "  \"highlightTitle\": string,\n" +
       "  \"highlightDescription\": string,\n" +
       "  \"highlightCategory\": string,\n" +
       "  \"latest\": { \"title\": string, \"description\": string, \"category\": string }[9]\n" +
-      "}', based on the following title: 'Buggle' and the following url: 'www.buggle.com'");
+      "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
 
-    if (this.pageContent?.title) {
-      this.imgUrl = await this.imgApi.FetchImage(this.pageContent.title);
+    if (this.pageContent?.websiteName) {
+      this.imgUrl = await this.imgApi.FetchImage(this.pageContent.websiteName);
     }
   }
 

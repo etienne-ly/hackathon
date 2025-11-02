@@ -10,6 +10,7 @@ main {
   left: 0;
   width: 100%;
   position: sticky;
+  z-index: 1;
 }
 
 .tabs {
@@ -52,6 +53,9 @@ main {
 }
 
 .tab-title {
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
   user-select: none;
   font-size: 0.75rem;
 }

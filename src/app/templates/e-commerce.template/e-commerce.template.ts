@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 
 interface PageContent {
-  title: string;
+  websiteName: string;
   promotionProduct: string;
   promotionCatch: string;
   promotionDescription: string;
@@ -18,10 +18,14 @@ interface PageContent {
   styleUrl: './e-commerce.template.css',
 })
 export class ECommerceTemplate implements OnInit {
+
+  @Input() title: string = "";
+  @Input() url: string = "";
+
   constructor(private api: AiService) {}
 
   async ngOnInit() {
-    this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"title\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', based on the following title: 'Flexxed' and following url: 'www.flexxed-apparel.com'");
+    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"websiteName\": string, \"promotionProduct\": string, \"promotionCatch\": string, \"promotionDescription\": string, \"subPages\": string[], \"categories\": string[], \"products: { \"name\": string; \"category\": string; \"rating\": number; \"price\": number }[9] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
   }
 
   pageContent?: PageContent;

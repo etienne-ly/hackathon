@@ -7,7 +7,7 @@ import {CompletionState, DangerState, DormState, Email, Popup, Tab, UserInfo} fr
 export class GameService {
 
   public user: UserInfo;
-  public hasWifi: boolean = false;
+  public hasWifi: boolean = true;
 
   public popup: Popup = {
     visible: true,

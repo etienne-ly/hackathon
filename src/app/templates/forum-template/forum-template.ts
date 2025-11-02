@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AiService} from '../../service/ai.service';
 
 interface PageContent {
   color: string;
-  title: string;
+  websiteName: string;
   trendingCategories: string[];
   threads: {title: string, description: string, category: string, upvotes: number, comments: number}[];
 }
@@ -15,10 +15,14 @@ interface PageContent {
   styleUrl: './forum-template.css',
 })
 export class ForumTemplate {
+
+  @Input() title: string = "";
+  @Input() url: string = "";
+
   constructor(private api: AiService) {}
 
   async ngOnInit() {
-    this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"title\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: 'OH MY TRENDS' and following url: 'www.oh-my-trends.com'");
+    this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
   }
 
   pageContent?: PageContent;
