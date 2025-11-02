@@ -30,6 +30,7 @@ export class Binocular extends BasePage implements OnInit {
   constructor(public game: GameService, private aiService: AiService, imageService: ImgApiService) {
     super(imageService, game);
     this.hasSpellingErrors = false;
+    this.url = "https://binocular.com"
   }
 
   override async ngOnInit(): Promise<void> {
