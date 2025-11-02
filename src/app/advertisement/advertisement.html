@@ -1,0 +1,8 @@
+<div
+  class="container"
+  [ngClass]="side.toString().toLowerCase()"
+  [style.transform]="'translate(' + offsets.posX + 'px,' + offsets.posY + 'px)'"
+>
+  <img [src]="imageSrc" alt="Advertisement">
+  <button (click)="onClose()">X</button>
+</div>

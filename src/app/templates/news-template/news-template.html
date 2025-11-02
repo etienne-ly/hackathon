@@ -9,9 +9,13 @@
     </ul>
   </div>
 } @else {
-  @if (pageContent){
+  @if (pageContent) {
+    @for (ad of advertisements; track ad) {
+      <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
+    }
+
     <header>
-      <h2 style="color:{{pageContent?.color}}">{{ pageContent?.websiteName }}</h2>
+      <h2 style="color:{{pageContent.color}}">{{ pageContent.websiteName }}</h2>
       <div>
         <p>Headlines</p>
         <p>Stories</p>
@@ -29,20 +33,20 @@
         <img style="width: 100%; height: 100%; object-fit: cover" [src]="imgUrl" alt=""/>
       </div>
       <div style="display: flex; flex-direction: column; flex: 1; padding: 4rem; gap: 1rem;">
-        <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ pageContent?.highlightCategory }}</p>
-        <h4>{{ pageContent?.highlightTitle }}</h4>
-        <p>{{ pageContent?.highlightDescription }}</p>
+        <p style="font-size: 0.6rem; color: {{pageContent.color}}">{{ pageContent.highlightCategory }}</p>
+        <h4>{{ pageContent.highlightTitle }}</h4>
+        <p>{{ pageContent.highlightDescription }}</p>
       </div>
     </section>
     <section>
       <h3>Latest News</h3>
       <div class="latest-news">
-        @for (news of pageContent?.latest; track news) {
+        @for (news of pageContent.latest; track news) {
           <div class="news">
-            <div style="height: 6rem; width: 10rem">
+            <div style="height: 7rem; width: 12rem">
               <img style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem;" src="{{images[news.title]}}" alt="">
             </div>
-            <p style="font-size: 0.6rem; color: {{pageContent?.color}}">{{ news.category }}</p>
+            <p style="font-size: 0.6rem; color: {{pageContent.color}}">{{ news.category }}</p>
             <h4>{{ news.title }}</h4>
             <p>{{ news.description }}</p>
           </div>
@@ -50,7 +54,7 @@
       </div>
     </section>
     <footer>
-      <h2 style="font-family: 'Times New Roman', Times, serif">{{ pageContent?.websiteName }}</h2>
+      <h2 style="font-family: 'Times New Roman', Times, serif">{{ pageContent.websiteName }}</h2>
       <div style="display: flex; gap: 1rem">
         <p>Headlines</p>
         <p>Stories</p>
