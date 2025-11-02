@@ -1,3 +1,5 @@
+import {ComponentRef} from '@angular/core';
+
 export interface UserInfo {
   address: string;
   email: string;
@@ -26,6 +28,7 @@ export interface Email {
 export interface Tab {
   title: string;
   url: string;
+  componentRef: ComponentRef<any>;
 }
 
 export interface DormState {
@@ -38,4 +41,11 @@ export interface PageContent {
   image: string;
   action: string;
   footer: string;
+}
+
+export interface WebPage {
+  domain: string;
+  title: string;
+  description: string;
+  url: string;
 }

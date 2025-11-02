@@ -1,12 +1,3 @@
-import {Routes} from '@angular/router';
-import {MailComponent} from './mail-page/mail-page.component';
-import {DormComponent} from '../dorm/dorm';
+import { Routes } from '@angular/router';
 
-export const routes: Routes = [{
-  path: 'insideMail',
-  component: MailComponent
-}, {
-  path: 'dorm',
-  component: DormComponent
-},
-];
+export const routes: Routes = [];

@@ -5,6 +5,13 @@ main {
   max-width: 100vw !important;
 }
 
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: sticky;
+}
+
 .tabs {
   display: flex;
   align-items: center;
@@ -117,4 +124,5 @@ main {
 .content {
   overflow: auto;
   background-color: white;
+  padding: 1rem;
 }
