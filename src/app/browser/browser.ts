@@ -6,23 +6,22 @@ import {DormComponent} from '../dorm/dorm';
 import {BusinessTemplate} from '../templates/business/business.template';
 import {NewsTemplate} from '../templates/news-template/news-template';
 import {MailComponent} from '../mail-page/mail-page.component';
-import {FormPizza} from '../form-pizza/form-pizza';
-import {FormLogin} from '../form-login/form-login';
+import {GameService} from '../service/game.service';
 
 @Component({
   selector: 'app-browser',
   imports: [
     FormsModule,
     BusinessTemplate,
-    NewsTemplate,
-    FormPizza,
-    FormLogin
+    NewsTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
 })
 
 export class Browser {
+
+  constructor(public gameService: GameService) {}
 
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
@@ -109,7 +108,9 @@ export class Browser {
 
   replaceTab(title: string, url: string, component: Type<any>): ComponentRef<any> {
     if (this.currentTab == -1) {
-      return this.openTab(title, url, component);
+      const ref = this.openTab(title, url, component);
+      ref.setInput('replaceTab', (title: string, url: string, component: Type<any>) => this.replaceTab(title, url, component))
+      return ref;
     }
 
     const tab = this.tabs[this.currentTab];
@@ -139,12 +140,14 @@ export class Browser {
     if (this.currentTab == -1) {
       const ref = this.openTab("Binocular", "https://binocular.com", Binocular);
       ref.setInput("search", this.query);
+      ref.setInput('replaceTab', (title: string, url: string, component: Type<any>) => this.replaceTab(title, url, component))
       return;
     }
 
     // replace current tab with a search one
     const ref = this.replaceTab("Binocular", "https://binocular.com", Binocular);
     ref.setInput("search", this.query);
+    ref.setInput('replaceTab', (title: string, url: string, component: Type<any>) => this.replaceTab(title, url, component))
   }
 
 }

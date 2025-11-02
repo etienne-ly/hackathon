@@ -4,31 +4,50 @@
       @for (tab of tabs; track tab) {
         <div (click)="selectTab(tabs.indexOf(tab))" class="tab {{ currentTab === tabs.indexOf(tab) ? 'active' : ''}}">
           <img style="border-radius: 100%" src="https://picsum.photos/seed/{{tab.title}}/32" alt="{{tab.title}}"/>
-          <div class="tab-title">{{tab.title}}</div>
-          <span (click)="closeTab(tabs.indexOf(tab))" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
+          <div class="tab-title">{{ tab.title }}</div>
+          <span (click)="closeTab(tabs.indexOf(tab))" class="material-symbols-rounded tab-close"
+                style="font-size: 1rem;">close</span>
         </div>
       }
-      <span (click)="openTab('Binocular', 'https://binocular.com')" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">add</span>
+      <span (click)="openTab('Binocular', 'https://binocular.com')" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem;">add</span>
     </section>
     <section id="url">
-      <span title="Navigate to previous page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
-      <span title="Navigate to next page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
-      <span title="Reload this page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">refresh</span>
-      <span (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
-      <span (click)="openMail()" title="Navigate to mail" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
+      <span title="Navigate to previous page" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
+      <span title="Navigate to next page" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
+      <span title="Reload this page" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem;">refresh</span>
+      <span [class.notif]="!this.game.dorm.modemWorking" (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem;">home</span>
+      <span (click)="openMail()" title="Navigate to mail" class="material-symbols-rounded tab-button"
+            style="font-size: 1.1rem;">mail</span>
       <form id="url-field" (ngSubmit)="search()">
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
         <input name="query" class="url-input" type="text" [(ngModel)]="query">
         @if (query !== '') {
-          <span (click)="query = ''" class="material-symbols-rounded cursor-pointer" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">close</span>
+          <span (click)="query = ''" class="material-symbols-rounded cursor-pointer"
+                style="font-size: 1.1rem; color: oklch(55.6% 0 0);">close</span>
         }
       </form>
     </section>
   </section>
   <section class="content">
     <div #container></div>
-<!--    <app-form-login> </app-form-login>-->
-    <app-business-template></app-business-template>
+    <app-form-pizza></app-form-pizza>
+<!--    <app-business-template></app-business-template>-->
 <!--    <app-news-template></app-news-template>-->
   </section>
+  @if (gameService.popup.visible) {
+    <div id="popup">
+      <p style="font-size: 1rem;">{{gameService.popup.url}}</p>
+      <p style="font-size: 0.7rem; color: #888">{{gameService.popup.title}}</p>
+      <div>
+        @for (action of gameService.popup.actions; track action) {
+          <button (click)="gameService.popup.visible = false; action.action()">{{action.name}}</button>
+        }
+      </div>
+    </div>
+  }
 </main>

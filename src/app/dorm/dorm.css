@@ -1,18 +1,45 @@
 .dorm {
-  width: 100%;
+  padding-left: 4rem;
   overflow: hidden;
-  margin: 0;
+  font-family: monospace;
+  color: white;
+  background-color: #171616;
+  height: 90vh;
 }
 
-h1 {
-  text-align: center;
+.dorm-selector {
+  padding-left: 3rem;
 }
 
-.room {
-  margin-left: auto;
-  margin-right: auto;
-  width: 40rem;
-  height: 30rem;
-  border: black solid 2px;
+.dorm-selector.hovered,
+.dorm-selector:hover {
+  cursor: pointer;
+}
+.dorm-selector.hovered::before,
+.dorm-selector:hover::before {
+  display: inline;
+  content: ">> ";
 }
 
+.dorm-selector.no-action:hover::before,
+.dorm-selector.no-hover:hover::before {
+  display: inline;
+  content: "";
+}
+
+.dorm-selector.no-action {
+  color: #8f8e8e;
+}
+
+.loader {
+  display: inline-block;
+  margin-left: 10px;
+  animation: jumpSquare 1s steps(4) infinite; /* 4 jumps */
+}
+
+@keyframes jumpSquare {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(5px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(15px); }
+}

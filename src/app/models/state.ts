@@ -12,10 +12,6 @@ export interface CompletionState {
   classChoice: boolean;
 }
 
-export interface DangerState {
-  fakeEmailChance: number;
-}
-
 export interface Email {
   subject: string;
   sender: string;
@@ -32,8 +28,9 @@ export interface Tab {
 }
 
 export interface DormState {
-  windowOpen: boolean;
+  vpnUsed: boolean;
   modemWorking: boolean;
+  fixing: boolean;
 }
 
 export interface PageContent {
@@ -45,8 +42,16 @@ export interface PageContent {
 }
 
 export interface WebPage {
+  template: 'news' | 'forum' | 'e-commerce' | 'business';
   domain: string;
   title: string;
   description: string;
   url: string;
+}
+
+export interface Popup {
+  visible: boolean;
+  url: string;
+  title: string;
+  actions: { name: string, action: Function }[];
 }

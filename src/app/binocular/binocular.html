@@ -1,4 +1,4 @@
-@if (!game.hasWifi) {
+@if (!game.dorm.modemWorking) {
   <div class="page-no-wifi">
     <h2>No internet</h2>
     <p>Try:</p>
@@ -9,20 +9,22 @@
     </ul>
   </div>
 } @else {
-  @for (page of results; track page) {
+  <section>
+    @for (page of results; track page) {
 
-    <div class="page-info">
-      <div class="page-header">
-        <img src="https://picsum.photos/25?id={{page.title}}" alt="{{page.url}}">
-        <div>
-          <p class="page-header-domain">{{page.domain}}</p>
-          <p class="page-header-url">{{page.url}}</p>
+      <div class="page-info">
+        <div class="page-header">
+          <img src="https://picsum.photos/25?id={{page.title}}" alt="{{page.url}}">
+          <div>
+            <p class="page-header-domain">{{page.domain}}</p>
+            <p class="page-header-url">{{page.url}}</p>
+          </div>
         </div>
+
+        <p (click)="replaceTab(page.title, page.url, getComponentFromString(page.template)).setInput('title', page.title).setInput('url', page.url)" class="page-title">{{page.title}}</p>
+        <p class="page-description">{{page.description}}</p>
       </div>
 
-      <p class="page-title">{{page.title}}</p>
-      <p class="page-description">{{page.description}}</p>
-    </div>
-
-  } @empty {}
+    } @empty {}
+  </section>
 }

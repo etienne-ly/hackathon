@@ -1,129 +1,140 @@
-
-<div class="inside-container">
-  <!-- Header -->
-  <div class="header">
-    <div class="header-left">
-      <button class="menu-button">☰</button>
-      <span class="app-title">InsideMail</span>
-    </div>
-    <div class="header-center">
-      <div class="search-box">
-        <input type="text" placeholder="Search mail" class="search-input">
-        <span class="search-icon">🔍</span>
-      </div>
-    </div>
-    <div class="header-right">
-      <button class="header-button">⚙️</button>
-      <button class="header-button">🔄</button>
-      <button class="header-button">👤</button>
-    </div>
+@if (!game.dorm.modemWorking) {
+  <div class="page-no-wifi">
+    <h2>No internet</h2>
+    <p>Try:</p>
+    <ul>
+      <li>Check your dorm...</li>
+      <li>Lock your windows...</li>
+      <li>Fix your modem...</li>
+    </ul>
   </div>
-
-  <div class="main-content">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <button class="compose-button">+ New message</button>
-      <div class="folder-list">
-        <div class="folder-item active">
-          <span class="folder-icon">📥</span>
-          <span class="folder-name">Inbox</span>
-          <span class="unread-count" *ngIf="getUnreadCount() > 0">{{ getUnreadCount() }}</span>
+} @else {
+  <div class="inside-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <button class="menu-button">☰</button>
+        <span class="app-title">InsideMail</span>
+      </div>
+      <div class="header-center">
+        <div class="search-box">
+          <input type="text" placeholder="Search mail" class="search-input">
+          <span class="search-icon">🔍</span>
         </div>
-        <div class="folder-item">
-          <span class="folder-icon">📤</span>
-          <span class="folder-name">Sent Items</span>
-        </div>
-        <div class="folder-item">
-          <span class="folder-icon">📄</span>
-          <span class="folder-name">Drafts</span>
-        </div>
-        <div class="folder-item">
-          <span class="folder-icon">🗑️</span>
-          <span class="folder-name">Deleted Items</span>
-        </div>
+      </div>
+      <div class="header-right">
+        <button class="header-button">⚙️</button>
+        <button class="header-button">🔄</button>
+        <button class="header-button">👤</button>
       </div>
     </div>
 
-    <!-- Email List -->
-    <div class="email-list">
-      <div class="email-list-header">
-        <div class="email-list-actions">
-          <button class="action-button">📥</button>
-          <button class="action-button">📌</button>
-          <button class="action-button">🔄</button>
-        </div>
-        <div class="email-list-filters">
-          <span class="filter-text">Filter: All</span>
+    <div class="main-content">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <button class="compose-button">+ New message</button>
+        <div class="folder-list">
+          <div class="folder-item active">
+            <span class="folder-icon">📥</span>
+            <span class="folder-name">Inbox</span>
+            <span class="unread-count" *ngIf="getUnreadCount() > 0">{{ getUnreadCount() }}</span>
+          </div>
+          <div class="folder-item">
+            <span class="folder-icon">📤</span>
+            <span class="folder-name">Sent Items</span>
+          </div>
+          <div class="folder-item">
+            <span class="folder-icon">📄</span>
+            <span class="folder-name">Drafts</span>
+          </div>
+          <div class="folder-item">
+            <span class="folder-icon">🗑️</span>
+            <span class="folder-name">Deleted Items</span>
+          </div>
         </div>
       </div>
 
-      <div class="email-items">
-        <div
-          *ngFor="let email of emails"
-          class="email-item"
-          [class.unread]="!email.read"
-          [class.selected]="selectedEmail?.id === email.id"
-          (click)="selectEmail(email)"
-        >
-          <div class="email-checkbox">
-            <input type="checkbox">
+      <!-- Email List -->
+      <div class="email-list">
+        <div class="email-list-header">
+          <div class="email-list-actions">
+            <button class="action-button">📥</button>
+            <button class="action-button">📌</button>
+            <button class="action-button">🔄</button>
           </div>
-          <div class="email-important" (click)="toggleImportant(email); $event.stopPropagation()">
-            <span *ngIf="email.important" class="important-icon">⭐</span>
-            <span *ngIf="!email.important" class="important-icon">☆</span>
+          <div class="email-list-filters">
+            <span class="filter-text">Filter: All</span>
           </div>
-          <div class="email-sender">
-            {{ email.sender.name }}
-          </div>
-          <div class="email-content">
-            <div class="email-subject">
-              {{ email.subject }}
+        </div>
+
+        <div class="email-items">
+          <div
+            *ngFor="let email of emails"
+            class="email-item"
+            [class.unread]="!email.read"
+            [class.selected]="selectedEmail?.id === email.id"
+            (click)="selectEmail(email)"
+          >
+            <div class="email-checkbox">
+              <input type="checkbox">
             </div>
-<!--            <div class="email-preview">-->
-<!--              {{ email.content.split('\n\n')[1] || email.content }}-->
-<!--            </div>-->
-          </div>
-          <div class="email-time">
-            {{ email.sender.DateSend === 'Today' ? email.sender.TimeSend : email.sender.DateSend }}
+            <div class="email-important" (click)="toggleImportant(email); $event.stopPropagation()">
+              <span *ngIf="email.important" class="important-icon">⭐</span>
+              <span *ngIf="!email.important" class="important-icon">☆</span>
+            </div>
+            <div class="email-sender">
+              {{ email.sender.name }}
+            </div>
+            <div class="email-content">
+              <div class="email-subject">
+                {{ email.subject }}
+              </div>
+              <!--            <div class="email-preview">-->
+              <!--              {{ email.content.split('\n\n')[1] || email.content }}-->
+              <!--            </div>-->
+            </div>
+            <div class="email-time">
+              {{ email.sender.DateSend === 'Today' ? email.sender.TimeSend : email.sender.DateSend }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Email Detail -->
-    <div class="email-detail" *ngIf="selectedEmail">
-      <div class="email-detail-header">
-        <div class="email-detail-subject">
-          <h2>{{ selectedEmail?.subject }}</h2>
-          <div class="email-actions">
-            <button class="detail-action">↻</button>
-            <button class="detail-action">🗑️</button>
-            <button class="detail-action">⋯</button>
+      <!-- Email Detail -->
+      <div class="email-detail" *ngIf="selectedEmail">
+        <div class="email-detail-header">
+          <div class="email-detail-subject">
+            <h2>{{ selectedEmail?.subject }}</h2>
+            <div class="email-actions">
+              <button class="detail-action">↻</button>
+              <button class="detail-action">🗑️</button>
+              <button class="detail-action">⋯</button>
+            </div>
+          </div>
+          <div class="email-detail-sender">
+            <div class="sender-avatar">{{ selectedEmail!.sender.name.charAt(0) }}</div>
+            <div class="sender-info">
+              <div class="sender-name">{{ selectedEmail!.sender.name }}</div>
+              <div class="sender-email">{{ selectedEmail!.sender.email }}</div>
+            </div>
+            <div class="email-detail-time">
+              {{ selectedEmail!.sender.DateSend }} at {{ selectedEmail!.sender.TimeSend }}
+            </div>
           </div>
         </div>
-        <div class="email-detail-sender">
-          <div class="sender-avatar">{{ selectedEmail!.sender.name.charAt(0) }}</div>
-          <div class="sender-info">
-            <div class="sender-name">{{ selectedEmail!.sender.name }}</div>
-            <div class="sender-email">{{ selectedEmail!.sender.email }}</div>
-          </div>
-          <div class="email-detail-time">
-            {{ selectedEmail!.sender.DateSend }} at {{ selectedEmail!.sender.TimeSend }}
-          </div>
+        <div class="email-detail-body">
+          <pre [innerHTML]="selectedEmail?.content"></pre>
         </div>
       </div>
-      <div class="email-detail-body">
-        <pre [innerHTML]="selectedEmail?.content"></pre>
-      </div>
-    </div>
 
-    <!-- Empty State -->
-    <div class="email-detail empty" *ngIf="!selectedEmail">
-      <div class="empty-state">
-        <div class="empty-icon">📧</div>
-        <h3>Select an email to read</h3>
-        <p>Click on any email from your inbox to view its contents here.</p>
+      <!-- Empty State -->
+      <div class="email-detail empty" *ngIf="!selectedEmail">
+        <div class="empty-state">
+          <div class="empty-icon">📧</div>
+          <h3>Select an email to read</h3>
+          <p>Click on any email from your inbox to view its contents here.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+}
