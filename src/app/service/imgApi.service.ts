@@ -7,48 +7,28 @@ import {firstValueFrom} from 'rxjs';
 
 })
 export class ImgApiService {
-  private readonly apiKey: string = "AIzaSyCeb7S3yC5wmIuRcbkVNtuKUKWyfetMmEA";
-  private readonly searchEngineId: string = "c63e2327560b847f4";
 
-  constructor(private http: HttpClient) {
+  private sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async FetchImage(query: string): Promise<string> {
-    const searchQuery = `${query} business`;
-    const encodedQuery = encodeURIComponent(searchQuery);
-    const url = `https://www.googleapis.com/customsearch/v1?` +
-      `key=${this.apiKey}` +
-      `&cx=${this.searchEngineId}` +
-      `&q=${encodedQuery}` +
-      `&searchType=image` +
-      `&num=1` +
-      `&imgSize=large`;
+  async getImage(query: string, rank: number = 0): Promise<string> {
+    const url = `https://corsproxy.io/?https://www.ecosia.org/images?q=${encodeURIComponent(query)}`;
 
-    try {
-      const response = await firstValueFrom(
-        this.http.get<any>(url)
-      );
-      if (response?.items && response.items.length > 0) {
-        const item = response.items[0];
+    const response = await fetch(url);
+    const html = await response.text();
 
-        const imageUrl =
-          item.link ||
-          item.image?.thumbnailLink ||
-          item.pagemap?.cse_image?.[0]?.src ||
-          item.pagemap?.cse_thumbnail?.[0]?.src ||
-          '';
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const images = Array.from(doc.querySelectorAll('img'));
 
-        if (imageUrl) {
-          return imageUrl
-        } else {
-          console.warn("No items in Google API response:", response);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching image:", error);
-      return "null";
-    }
-    return "puto";
+    const rankedImages: string[] = images
+      .map(img => {
+        return img.getAttribute('src') || img.getAttribute('data-src') || '';
+      })
+
+    await this.sleep(100);
+    return rankedImages[rank];
   }
 
 }

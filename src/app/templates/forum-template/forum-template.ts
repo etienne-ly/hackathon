@@ -19,6 +19,7 @@ export class ForumTemplate {
 
   @Input() title: string = "";
   @Input() url: string = "";
+  pageContent?: PageContent;
 
   constructor(private api: AiService, public game: GameService) {}
 
@@ -26,5 +27,4 @@ export class ForumTemplate {
     this.pageContent = await this.api.get<PageContent>(`Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{ \"color\": string, \"websiteName\": string, \"trendingCategories\": string[5], \"threads\": { \"title\": string, \"description\": string, \"category\": string, \"upvotes\": number, \"comments\": number }[8] }', based on the following title: '${this.title}' and following url: '${this.url}'`);
   }
 
-  pageContent?: PageContent;
 }

@@ -366,6 +366,7 @@
 .email-detail-body {
   flex: 1;
   padding: 24px;
+  margin: 0;
   line-height: 1.6;
   overflow-y: auto;
 }

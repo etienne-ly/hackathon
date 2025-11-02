@@ -25,9 +25,10 @@ export class NewsTemplate implements OnInit {
   @Input() url: string = "";
 
   imgUrl:string="";
+  images: {[key: string]: string} = {};
   pageContent?: PageContent;
 
-  constructor(private api: AiService,private imgApi:ImgApiService, public game: GameService) { }
+  constructor(private api: AiService, public imgApi:ImgApiService, public game: GameService) { }
 
   async ngOnInit() {
 
@@ -41,7 +42,11 @@ export class NewsTemplate implements OnInit {
       "}', based on the following title: '${this.title}' and the following url: '${this.url}'`);
 
     if (this.pageContent?.websiteName) {
-      this.imgUrl = await this.imgApi.FetchImage(this.pageContent.websiteName);
+      this.imgUrl = await this.imgApi.getImage(this.pageContent.websiteName);
+    }
+
+    for (let latest of this.pageContent.latest) {
+      this.images[latest.title] = await this.imgApi.getImage(latest.title)
     }
   }
 }

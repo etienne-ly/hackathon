@@ -12,10 +12,17 @@ export interface CompletionState {
   classChoice: boolean;
 }
 
+export interface Sender {
+  name: string;
+  email: string;
+  DateSend: string;
+  TimeSend: string;
+}
+
 export interface Email {
+  id: number;
   subject: string;
-  sender: string;
-  date: string;
+  sender: Sender;
   read: boolean;
   important: boolean;
   content: string;

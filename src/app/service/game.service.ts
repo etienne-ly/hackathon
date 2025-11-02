@@ -7,7 +7,6 @@ import {CompletionState, DormState, Email, Popup, Tab, UserInfo} from '../models
 export class GameService {
 
   public user: UserInfo;
-  public hasWifi: boolean = true;
 
   public popup: Popup = {
     visible: true,
@@ -18,7 +17,7 @@ export class GameService {
 
   public dorm: DormState = {
     vpnUsed: false,
-    modemWorking: false,
+    modemWorking: true,
     fixing: false
   };
 
@@ -30,7 +29,27 @@ export class GameService {
 
   public danger: number = 0;
 
-  public emails: Email[] = [];
+  public emails: Email[] = [
+    {
+      id: 0,
+      subject: 'Chores',
+      sender: {
+        name: 'Mom',
+        email: 'mom@insidemail.com',
+        DateSend: 'Today',
+        TimeSend: 'Today'
+      },
+      read: false,
+      important: true,
+      content: `
+        <p>Hello son, here's a list of chores for you...</p>
+        <ul>
+            <li><strike-if done="orderedPizzas">Order pizza for your brother's birthday</strike-if></li>
+            <li><strike-if done="cleanRoom">Clean your room</strike-if></li>
+        </ul>
+      `
+    }
+  ];
 
   constructor() {
     // TODO: Randomly generate this
