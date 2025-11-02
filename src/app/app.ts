@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import {Browser} from './main-components/browser/browser';
-
 @Component({
   selector: 'app-root',
   imports: [Browser],
