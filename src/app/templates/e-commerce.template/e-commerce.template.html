@@ -42,7 +42,9 @@
       @for (category of pageContent?.categories; track category) {
         <div
           style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 6rem; max-width: 6rem;">
-          <img style="border-radius: 0.8rem" src="{{categoryImages[category]}}" alt="">
+          <div style="height: 4rem; width: 4rem">
+            <img style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem;" src="{{categoryImages[category]}}" alt="">
+          </div>
           <div style="display: flex; flex-direction: column; gap: 0.2rem; text-align: center">
             <h4>{{ category }}</h4>
             <p style="color: #605e5c; font-size: 0.8rem">{{categoryAmounts[category]}} items</p>
@@ -55,7 +57,7 @@
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center">
         @for (product of pageContent?.products; track product) {
           <div style="display: flex; flex-direction: column; gap: 0.4rem; min-width: 10rem; max-width: 10rem;">
-            <div style="height: 8rem; width: 8rem">
+            <div style="height: 10rem; width: 10rem">
               <img style="height: 100%; width: 100%; object-fit: cover; border-radius: 1rem;" src="{{productImages[product.name]}}" alt="">
             </div>
             <p>{{ product.name }}</p>

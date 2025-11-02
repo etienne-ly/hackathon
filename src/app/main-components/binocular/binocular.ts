@@ -32,7 +32,10 @@ export class Binocular implements OnInit {
     }
     this.loading = true;
 
-    this.results = await this.aiService.get<WebPage[]>(`Generate me fake webpage content FILLING this in JSON format ONLY (no extra words or characters): { "template": "news" | "forum" | "e-commerce" | "business", "domain": string, "title": string, "description": string, "url": string }[12], based on the following search string: "${this.search}".`)
+    this.results = await this.aiService.get<WebPage[]>(`Generate me fake webpage content FILLING this in JSON format ONLY (no extra words or characters): { "template": "news" | "forum" | "e-commerce" | "business", "domain": string, "title": string, "description": string, "url": string }[12], based on the following search string: "${this.search}". Exclude the protocol.`)
+    for (let res of this.results) {
+      res.url = (Math.floor(Math.random() * 100) < 40 ? "https" : "http") + "://" + res.url;
+    }
     this.loading = false;
   }
 

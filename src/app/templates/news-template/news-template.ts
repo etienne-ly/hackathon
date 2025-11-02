@@ -26,6 +26,7 @@ export class NewsTemplate implements OnInit {
 
   imgUrl:string="";
   images: {[key: string]: string} = {};
+
   pageContent?: PageContent;
 
   constructor(private api: AiService, public imgApi:ImgApiService, public game: GameService) { }
