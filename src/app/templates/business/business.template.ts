@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
+import {LoginOverlayService} from '../../service/login.overlay.service';
+import {FormLogin} from '../../form-login/form-login';
 
 interface PageContent {
   title: string;
@@ -17,10 +19,10 @@ interface PageContent {
   selector: 'app-business-template',
   templateUrl: './business.template.html',
   styleUrls: ['./business.template.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, FormLogin]
 })
 export class BusinessTemplate implements OnInit {
-  constructor(private api: AiService, private imgApi : ImgApiService) {
+  constructor(private api: AiService, private imgApi : ImgApiService, public overlayService: LoginOverlayService) {
   }
   image: string = "";
 
@@ -39,6 +41,9 @@ export class BusinessTemplate implements OnInit {
     if (this.pageContent?.title) {
       this.image = await this.imgApi.FetchImage(this.pageContent.title);
     }
+  }
+  openLogin(): void {
+    this.overlayService.open();
   }
 
   pageContent?: PageContent;

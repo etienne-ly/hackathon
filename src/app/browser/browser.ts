@@ -7,6 +7,7 @@ import {BusinessTemplate} from '../templates/business/business.template';
 import {NewsTemplate} from '../templates/news-template/news-template';
 import {MailComponent} from '../mail-page/mail-page.component';
 import {FormPizza} from '../form-pizza/form-pizza';
+import {FormLogin} from '../form-login/form-login';
 
 @Component({
   selector: 'app-browser',
@@ -14,7 +15,8 @@ import {FormPizza} from '../form-pizza/form-pizza';
     FormsModule,
     BusinessTemplate,
     NewsTemplate,
-    FormPizza
+    FormPizza,
+    FormLogin
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',

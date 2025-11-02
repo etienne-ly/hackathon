@@ -4,7 +4,8 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-brand">
-        <span class="brand-name">{{ pageContent?.title }}</span>
+        <span class="brand-icon">🚀</span>
+        <span class="brand-name">{{ pageContent.title }}</span>
       </div>
       <ul class="nav-menu">
         <li><a href="#home">Home</a></li>
@@ -12,7 +13,13 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="menu-toggle">☰</button>
+      <div class="nav-actions">
+        <button type="button" class="btn-login-nav" (click)="openLogin()">
+          <span class="login-icon">👤</span>
+          Login
+        </button>
+        <button class="menu-toggle">☰</button>
+      </div>
     </div>
   </nav>
 
@@ -72,6 +79,11 @@
         </div>
       </div>
       <button class="btn-consult">{{ pageContent?.ctaText }}</button>
+    </div>
+    <div class="overlay-backdrop" *ngIf="overlayService.isOpen()" (click)="overlayService.close()">
+      <div class="overlay-container" (click)="$event.stopPropagation()">
+        <app-form-login></app-form-login>
+      </div>
     </div>
   </section>
   <footer class="footer">
