@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AiService} from '../../../service/ai.service';
+import {AiService} from '../../service/ai.service';
 
 interface PageContent {
   color: string;
