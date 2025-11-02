@@ -2,7 +2,7 @@
   <section class="tabs">
     @for (tab of gameService.tabs; track tab) {
       <div (click)="selectTab(tab)" class="tab {{ currentTab === gameService.tabs.indexOf(tab) ? 'active' : ''}}">
-        <img style="border-radius: 100%" src="{{tab.icon}}"/>
+        <img style="border-radius: 100%" src=""/>
         <div class="tab-title">{{tab.title}}</div>
         <span (click)="closeTab(tab, $event)" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
       </div>
@@ -21,6 +21,6 @@
     </div>
   </section>
   <section class="content">
-    <router-outlet></router-outlet>
+    <app-e-commerce-template></app-e-commerce-template>
   </section>
 </main>

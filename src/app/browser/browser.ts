@@ -4,12 +4,14 @@ import {GameService} from '../../service/game.service';
 import {NewsTemplate} from '../templates/news-template/news-template';
 import {BusinessTemplate} from '../templates/business/business.template';
 import {Tab} from '../../models/state';
+import {ECommerceTemplate} from '../templates/e-commerce.template/e-commerce.template';
 
 @Component({
   selector: 'app-browser',
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    ECommerceTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',

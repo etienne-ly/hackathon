@@ -13,7 +13,7 @@ interface PageContent {
   selector: 'app-business-template',
   templateUrl: './business.template.html',
   styleUrls: ['./business.template.css'],
-  imports : [RouterOutlet]
+  imports : []
 })
 export class BusinessTemplate implements OnInit {
   constructor(private api: ApiService) {}
