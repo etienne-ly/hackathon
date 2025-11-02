@@ -13,7 +13,11 @@
     @for (ad of advertisements; track ad) {
       <app-advertisement [imageSrc]="ad.imageSrc" [side]="ad.side" [offsets]="ad.offsets" (close)="removeAd(ad.id)"></app-advertisement>
     }
-
+    <div class="overlay-backdrop" *ngIf="loginOverlayService.isOpen()" (click)="loginOverlayService.close()">
+      <div class="overlay-container" (click)="$event.stopPropagation()">
+        <app-form-login></app-form-login>
+      </div>
+    </div>
     <header>
       <h2 style="color: {{pageContent.color}}">{{ pageContent.websiteName }}</h2>
       <div
@@ -21,7 +25,7 @@
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
         <input type="text" placeholder="Search any topic">
       </div>
-      <button (click)="checkForObjectiveCompletion()" style="color: white; background-color: {{pageContent.color}}">Login</button>
+      <button (click)="this.loginOverlayService.open(); this.checkForObjectiveCompletion();" style="color: white; background-color: {{pageContent.color}}">Login</button>
     </header>
     <div style="display: flex">
       <nav>

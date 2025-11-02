@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {LoginOverlayService} from '../../service/login.overlay.service';
+import {GameService} from '../../service/game.service';
 
 interface LoginCredentials {
   email: string;
