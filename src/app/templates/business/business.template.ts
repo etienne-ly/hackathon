@@ -4,7 +4,7 @@ import {AiService} from '../../service/ai.service';
 import {ImgApiService} from '../../service/imgApi.service';
 import {GameService} from '../../service/game.service';
 import {LoginOverlayService} from '../../service/login.overlay.service';
-import {FormLogin} from '../../form-login/form-login';
+import {FormLogin} from '../../form-componentes/form-login/form-login';
 
 interface PageContent {
   websiteName: string;
