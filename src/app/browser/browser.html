@@ -2,25 +2,30 @@
   <section class="tabs">
     @for (tab of gameService.tabs; track tab) {
       <div (click)="selectTab(tab)" class="tab {{ currentTab === gameService.tabs.indexOf(tab) ? 'active' : ''}}">
-        <img style="border-radius: 100%" src="{{tab.icon}}"/>
-        <div class="tab-title">{{tab.title}}</div>
-        <span (click)="closeTab(tab, $event)" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
+        <div class="tab-title">{{ tab.title }}</div>
+        <span (click)="closeTab(tab, $event)" class="material-symbols-rounded tab-close"
+              style="font-size: 1rem;">close</span>
       </div>
     }
     <span (click)="addTab()" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">add</span>
   </section>
   <section id="url">
-    <span title="Navigate to previous page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
-    <span title="Navigate to next page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
+    <span title="Navigate to previous page" class="material-symbols-rounded tab-button"
+          style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
+    <span title="Navigate to next page" class="material-symbols-rounded tab-button"
+          style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
     <span title="Reload this page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">refresh</span>
-    <span title="Monitor your home" (click)="addTab(this.dormTab)" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
-    <span title="Navigate to mail" (click)="addTab(this.mailTab)"  class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
+    <span title="Monitor your home" (click)="addTab(this.dormTab)" class="material-symbols-rounded tab-button"
+          style="font-size: 1.1rem;">home</span>
+    <span title="Navigate to mail" (click)="addTab(this.mailTab)" class="material-symbols-rounded tab-button"
+          style="font-size: 1.1rem;">mail</span>
     <div id="url-field">
       <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
       <input class="url-input" type="text" value="{{''}}">
     </div>
   </section>
   <section class="content">
-    <router-outlet></router-outlet>
+    <app-business-template>
+      </app-business-template>
   </section>
 </main>

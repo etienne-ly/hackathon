@@ -9,7 +9,8 @@ import {Tab} from '../../models/state';
   selector: 'app-browser',
   imports: [
     RouterLink,
-    RouterOutlet
+    RouterOutlet,
+    BusinessTemplate
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-
-declare const puter: any;
+import {puter} from '@heyputer/puter.js';
 
 @Injectable({
   providedIn: 'root'

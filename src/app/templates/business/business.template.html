@@ -1,18 +1,78 @@
-<section class="business-hero">
-</section>
-<div class="hero-image" >
-  <div class="hero-overlay">
-    <div class="hero-inner">
-      <h1 class="hero-title">{{pageContent?.title}}</h1>
-      <div class="hero-content" [innerHTML]="pageContent?.url"></div>
-      <a class="hero-cta" target="_blank" rel="noopener noreferrer">{{ pageContent?.ctaText }}</a>
+<div class="business-template" [style.--primary-color]="pageContent?.color">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-name">{{ pageContent?.title }}</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle">☰</button>
     </div>
-  </div>
-</div>
+  </nav>
 
-<section class="business-body">
-  <div class="container">
-    <ng-content></ng-content>
-  </div>
-</section>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ pageContent?.title }}</h1>
+        <p class="hero-description">{{ pageContent?.description }}</p>
+        <div class="hero-actions">
+          <button class="btn-primary">{{ pageContent?.ctaText }}</button>
+          <button class="btn-secondary">
+            <span class="play-icon">▶</span>
+            Watch Intro
+          </button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://picsum.photos/1920/1080" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="features-container">
+      <h2 class="section-title">Our Main Features</h2>
+      <div class="content-wrapper">
+        <div class="features-content">
+          <p class="features-text">{{ pageContent?.content }}</p>
+          <button class="btn-features">Learn More</button>
+        </div>
+        <div class="features-image">
+          <img src="https://picsum.photos/seed/a/1920/1080" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">{{ pageContent?.email }}</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-label">Call Us</div>
+            <div class="contact-value">{{ pageContent?.phone }}</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-consult">{{pageContent?.ctaText}}</button>
+    </div>
+  </section>
+
+</div>
 
