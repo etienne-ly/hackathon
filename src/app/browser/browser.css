@@ -124,5 +124,8 @@ main {
 .content {
   overflow: auto;
   background-color: white;
-  padding: 1rem;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
 }

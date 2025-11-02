@@ -14,16 +14,18 @@
       <span title="Navigate to previous page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_back</span>
       <span title="Navigate to next page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
       <span title="Reload this page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">refresh</span>
-      <span title="Monitor your home" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
+      <span (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
       <span title="Navigate to mail" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
       <form id="url-field" (ngSubmit)="search()">
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
         <input name="query" class="url-input" type="text" [(ngModel)]="query">
+        @if (query !== '') {
+          <span (click)="query = ''" class="material-symbols-rounded cursor-pointer" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">close</span>
+        }
       </form>
     </section>
   </section>
   <section class="content">
     <div #container></div>
-    <app-business-template></app-business-template>
   </section>
 </main>

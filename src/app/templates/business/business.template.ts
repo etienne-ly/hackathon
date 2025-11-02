@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AiService} from '../../../service/ai.service';
-import {ImgApiService} from '../../../service/imgApi.service';
+import {AiService} from '../../service/ai.service';
+import {ImgApiService} from '../../service/imgApi.service';
 
 interface PageContent {
   title: string;
@@ -13,7 +13,6 @@ interface PageContent {
   description: string;
   ctaText: string;
 }
-
 @Component({
   selector: 'app-business-template',
   templateUrl: './business.template.html',
@@ -23,9 +22,6 @@ interface PageContent {
 export class BusinessTemplate implements OnInit {
   constructor(private api: AiService, private imgApi : ImgApiService) {
   }
-
-  key: string = "AIzaSyCeb7S3yC5wmIuRcbkVNtuKUKWyfetMmEA";
-  cx: string = "c63e2327560b847f4";
   image: string = "";
 
   async ngOnInit() {
@@ -44,8 +40,6 @@ export class BusinessTemplate implements OnInit {
       this.image = await this.imgApi.FetchImage(this.pageContent.title);
     }
   }
-
-
 
   pageContent?: PageContent;
 }

@@ -29,6 +29,25 @@ nav {
 }
 
 section {
-  margin: 1rem 4rem;
+  margin: 2rem 4rem;
   position: relative;
+}
+
+section img {
+  border-radius: 2rem;
+}
+
+section button {
+  border: none;
+  background-color: white;
+  align-self: flex-start;
+  padding: 0.6rem 1rem;
+  border-radius: 1rem;
+}
+
+footer {
+  background-color: #101010;
+  color: #707070;
+  font-size: 0.8rem;
+  padding: 4rem;
 }
