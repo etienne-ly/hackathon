@@ -3,7 +3,7 @@
     <section class="tabs">
       @for (tab of tabs; track tab) {
         <div (click)="selectTab(tabs.indexOf(tab))" class="tab {{ currentTab === tabs.indexOf(tab) ? 'active' : ''}}">
-          <img style="border-radius: 100%" src="https://picsum.photos/seed/{{tab.title}}/32" alt=""/>
+          <img style="border-radius: 100%" src="https://picsum.photos/seed/{{tab.title}}/32" alt="{{tab.title}}"/>
           <div class="tab-title">{{tab.title}}</div>
           <span (click)="closeTab(tabs.indexOf(tab))" class="material-symbols-rounded tab-close" style="font-size: 1rem;">close</span>
         </div>
@@ -15,7 +15,7 @@
       <span title="Navigate to next page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem; color: oklch(70.8% 0 0);">arrow_forward</span>
       <span title="Reload this page" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">refresh</span>
       <span (click)="openDorm()" title="Monitor your dorm" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">home</span>
-      <span title="Navigate to mail" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
+      <span (click)="openMail()" title="Navigate to mail" class="material-symbols-rounded tab-button" style="font-size: 1.1rem;">mail</span>
       <form id="url-field" (ngSubmit)="search()">
         <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
         <input name="query" class="url-input" type="text" [(ngModel)]="query">
