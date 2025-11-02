@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiService} from '../../../service/api-service';
-import {RouterOutlet} from '@angular/router';
+import {AiService} from '../../../service/ai.service';
 
 interface PageContent {
   title: string;
@@ -16,7 +15,7 @@ interface PageContent {
   imports : []
 })
 export class BusinessTemplate implements OnInit {
-  constructor(private api: ApiService) {}
+  constructor(private api: AiService) {}
   async ngOnInit() {
     console.log("Sending request to api");
     this.pageContent = await this.api.get<PageContent>("Generate me, in raw JSON format, a webpage content filling this criteria: '{\n" +

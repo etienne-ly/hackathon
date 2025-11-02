@@ -2,11 +2,13 @@ import {Component, ComponentRef, Type, ViewChild, ViewContainerRef} from '@angul
 import {FormsModule} from '@angular/forms';
 import {Tab} from '../../models/state';
 import {Binocular} from '../../page/binocular/binocular';
+import {ECommerceTemplate} from '../templates/e-commerce.template/e-commerce.template';
 
 @Component({
   selector: 'app-browser',
   imports: [
     FormsModule,
+    ECommerceTemplate,
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',

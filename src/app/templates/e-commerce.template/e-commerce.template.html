@@ -15,21 +15,39 @@
   }
 </nav>
 <section>
-  <img style="max-width: 100%;" src="https://picsum.photos/1920/864">
-  <div style="display: flex; flex-direction: column; justify-content: center; max-width: 33%; gap: 1rem; position: absolute; left: 5rem; top: 0">
+  <img style="max-width: 100%; background-image: linear-gradient()" src="https://picsum.photos/1920/720">
+  <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 33%; gap: 1rem; position: absolute; left: 4rem; top: 0; text-shadow: 0 0 2rem black; color: white;">
     <h4>{{pageContent?.promotionProduct}}</h4>
     <h2>{{pageContent?.promotionCatch}}</h2>
     <p>{{pageContent?.promotionDescription}}</p>
     <button>Shop Now</button>
   </div>
 </section>
-<section>
-  <div></div>
+<section style="display: flex; gap: 2rem; justify-content: center">
+  @for (category of pageContent?.categories; track category) {
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 6rem; max-width: 6rem;">
+      <img style="border-radius: 0.8rem" src="https://picsum.photos/seed/{{category}}/50/50" alt="">
+      <div style="display: flex; flex-direction: column; gap: 0.2rem; text-align: center">
+        <h4>{{category}}</h4>
+        <p style="color: #605e5c; font-size: 0.8rem">{{Math.floor(Math.random() * 300)}} items</p>
+      </div>
+    </div>
+  }
 </section>
-<section>
-  <div></div>
-  <div></div>
+<section style="display: flex; flex-direction: column; gap: 1rem">
+  <h3>Popular products</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center">
+    @for (product of pageContent?.products; track product) {
+      <div style="display: flex; flex-direction: column; gap: 0.4rem; min-width: 10rem; max-width: 10rem;">
+        <img style="border-radius: 1rem;" src="https://picsum.photos/seed/{{product.name}}/160/220" alt="">
+        <p>{{product.name}}</p>
+        <p style="font-size: 0.8rem; color: #605e5c">{{product.rating}} | {{product.category}}</p>
+        <p>${{product.price}}</p>
+        <button style="align-self: flex-start; background-color: black; color: white">Order Now</button>
+      </div>
+    }
+  </div>
 </section>
 <footer>
-
+  <p>{{pageContent?.title}} 2025, all rights reserved</p>
 </footer>
