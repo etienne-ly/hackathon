@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from '../../../service/api-service';
+import {AiService} from '../../../service/ai.service';
 
 interface PageContent {
   color: string;
@@ -17,7 +17,7 @@ interface PageContent {
   styleUrl: './news-template.css',
 })
 export class NewsTemplate implements OnInit {
-  constructor(private api: ApiService) {}
+  constructor(private api: AiService) {}
 
   async ngOnInit() {
     this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ApiService} from '../../../service/api-service';
 import {RouterOutlet} from '@angular/router';
 import {CommonModule} from '@angular/common';
+import {AiService} from '../../../service/ai.service';
 
 interface PageContent {
   title: string;
@@ -22,7 +22,7 @@ interface PageContent {
   imports : [CommonModule]
 })
 export class BusinessTemplate implements OnInit {
-  constructor(private api: ApiService) {}
+  constructor(private api: AiService) {}
   async ngOnInit() {
     console.log("Sending request to api");
     this.pageContent = await this.api.get<PageContent>("Generate me a webpage content FILLING this format ONLY (no extra words or characters): '{\n" +
@@ -33,7 +33,4 @@ export class BusinessTemplate implements OnInit {
   }
 
   pageContent?: PageContent;
-
-
-
 }

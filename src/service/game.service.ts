@@ -23,7 +23,6 @@ export class GameService {
   };
 
   public emails: Email[] = [];
-  public tabs: Tab[] = [];
 
   constructor() {
     // TODO: Randomly generate this

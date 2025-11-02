@@ -1,0 +1,39 @@
+.page-info {
+  max-width: 40rem;
+  margin-left: 12rem;
+  padding-bottom: 2rem;
+
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 0.6rem;
+    border-radius: 50%;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .page-header-domain {
+    font-size: 1rem;
+  }
+
+  .page-header-url {
+    font-size: 0.7rem;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+    color: #1a0dab;
+    margin-bottom: 0.2rem;
+  }
+
+  .page-description {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,35 @@
+<header>
+  <h2>{{pageContent?.title}}</h2>
+  <div style="display: flex; flex: 1; gap: 0.4rem; align-items: center; border-radius: 100rem; border: 1px solid oklch(90% 0 0); padding: 0.4rem 0.8rem;">
+    <span class="material-symbols-rounded" style="font-size: 1.1rem; color: oklch(55.6% 0 0);">search</span>
+    <input type="text" placeholder="Search for a product or a brand...">
+  </div>
+  <div style="display: flex; gap: 1rem;">
+    <span class="material-symbols-rounded" style="font-size: 1.1rem;">favorite</span>
+    <span class="material-symbols-rounded" style="font-size: 1.1rem;">shopping_cart</span>
+  </div>
+</header>
+<nav>
+  @for (page of pageContent?.subPages; track page) {
+    <p>{{page.toUpperCase()}}</p>
+  }
+</nav>
+<section>
+  <img style="max-width: 100%;" src="https://picsum.photos/1920/864">
+  <div style="display: flex; flex-direction: column; justify-content: center; max-width: 33%; gap: 1rem; position: absolute; left: 5rem; top: 0">
+    <h4>{{pageContent?.promotionProduct}}</h4>
+    <h2>{{pageContent?.promotionCatch}}</h2>
+    <p>{{pageContent?.promotionDescription}}</p>
+    <button>Shop Now</button>
+  </div>
+</section>
+<section>
+  <div></div>
+</section>
+<section>
+  <div></div>
+  <div></div>
+</section>
+<footer>
+
+</footer>
