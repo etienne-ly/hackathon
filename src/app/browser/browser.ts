@@ -7,7 +7,7 @@ import {DormComponent} from '../dorm/dorm';
 @Component({
   selector: 'app-browser',
   imports: [
-    FormsModule,
+    FormsModule
   ],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
